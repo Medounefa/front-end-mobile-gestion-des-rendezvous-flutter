@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+  flutter_native_splash: 2.4.4
+  flutter_inner_shadow: ^0.0.1
+  intl: ^0.20.2
   flutter_test:
     sdk: flutter
 
@@ -52,7 +55,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  assets:
+   - assets/images/logo.jpg
+   - assets/images/med1.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
