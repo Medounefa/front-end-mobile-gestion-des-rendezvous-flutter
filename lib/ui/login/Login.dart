@@ -1,10 +1,40 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
+import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/signUp/signUp.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _nomController = TextEditingController();
+  final TextEditingController _mdpController = TextEditingController();
+
+  void _seConnect() {
+    String nom = _nomController.text.trim().toLowerCase();
+    String mdp = _mdpController.text;
+
+    if (mdp == "1234") {
+      switch (nom) {
+        case 'patient':
+          Navigator.pushReplacement(
+              (context),
+              MaterialPageRoute(
+                  builder: (context) => ListmedecinPourPatient()));
+          break;
+        case 'medecin':
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => listeDesRendezVousPourMedecins()));
+          break;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +84,7 @@ class Login extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: TextField(
+                          controller: _nomController,
                           decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Entrez votre email",
@@ -66,6 +97,7 @@ class Login extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: TextField(
+                          controller: _mdpController,
                           decoration: InputDecoration(
                             labelText: "Mot de passe",
                             hintText: "Entrez votre mot de passe",
@@ -78,31 +110,24 @@ class Login extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Color(0xFF0CFAFA), // couleur de fond
-                            foregroundColor: Colors.white, // couleur du texte
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Color(0xFF0CFAFA), // couleur de fond
+                              foregroundColor: Colors.white, // couleur du texte
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Listmedecinourpatient()));
-                          },
-                          child: Text(
-                            'Se connecter',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                            child: Text(
+                              'Se connecter',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: _seConnect),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 65),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/creneaux-disponibles/CreneauxDisponibles.dart';
+import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
+import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:intl/intl.dart';
 
 class PriseDeRendezVous extends StatefulWidget {
@@ -24,6 +27,79 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
     });
   }
 
+  void _showConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          child: AlertDialog(
+            // content: Text('Rendez-vous pris avec succes'),
+            actions: [
+              // Text("Rendez-vous pris avec succes"),
+              // TextButton(
+              //   child: Text('Annuler'),
+              //   onPressed: () {
+              //     Navigator.of(context).pop(); // Fermer le popup
+              //   },
+              // ),
+              // TextButton(
+              //   child: Text('Oui'),
+              //   onPressed: () {
+              //     Navigator.of(context).pop(); // Fermer
+              //     // 👉 Action à exécuter
+              //     print('Action confirmée');
+              //   },
+              // ),
+              Container(
+                padding: EdgeInsets.only(left: 200),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero)),
+                  onPressed: () {
+                    Navigator.push(
+                        (context),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                HistoriqueRendezVousPourPatients()));
+                  },
+                  child: Text("x"),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/right.png",
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Rendez-vous pris avec succes"),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     String formattedDate =
@@ -32,7 +108,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0CFAFA),
-        toolbarHeight: 120,
+        toolbarHeight: 100,
         title: Text(
           "Prendre un rendez-vous \navec le medecin",
         ),
@@ -40,19 +116,32 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
           Row(
             children: [
               Container(
-                child: Icon(
-                  Icons.notifications,
-                  size: 40,
+                child: Stack(
+                  children: [
+                    Icon(
+                      Icons.notifications,
+                      size: 40,
+                    ),
+                    Positioned(
+                      top: 2,
+                      right: 0,
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 1.2),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(right: 10),
                 child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/logo.jpg",
-                    width: 40,
-                    height: 40,
-                  ),
+                  child: UserMenu(),
                 ),
               ),
             ],
@@ -224,7 +313,8 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                                         side: BorderSide.none,
                                         borderRadius: BorderRadius.circular(5)),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      _showConfirmationDialog(context),
                                   child: Text(
                                     "Confirmer",
                                     style: TextStyle(color: Colors.black),

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/PriseDErendezVous.dart';
+import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
-class Listmedecinourpatient extends StatefulWidget {
-  const Listmedecinourpatient({super.key});
+class ListmedecinPourPatient extends StatefulWidget {
+  const ListmedecinPourPatient({super.key});
 
   @override
-  State<Listmedecinourpatient> createState() => _ListmedecinourpatientState();
+  State<ListmedecinPourPatient> createState() => _ListmedecinourpatientState();
 }
 
-class _ListmedecinourpatientState extends State<Listmedecinourpatient> {
+class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0CFAFA),
-        toolbarHeight: 120,
+        toolbarHeight: 100,
         title: Text(
           "Liste des medecins \ndisponibles",
         ),
@@ -22,19 +23,32 @@ class _ListmedecinourpatientState extends State<Listmedecinourpatient> {
           Row(
             children: [
               Container(
-                child: Icon(
-                  Icons.notifications,
-                  size: 40,
+                child: Stack(
+                  children: [
+                    Icon(
+                      Icons.notifications,
+                      size: 40,
+                    ),
+                    Positioned(
+                      top: 2,
+                      right: 0,
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 1.2),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(right: 10),
                 child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/logo.jpg",
-                    width: 40,
-                    height: 40,
-                  ),
+                  child: UserMenu(),
                 ),
               ),
             ],
@@ -209,8 +223,7 @@ class _ListmedecinourpatientState extends State<Listmedecinourpatient> {
                                                                         .none),
                                                               ),
                                                               onPressed: () {
-                                                                Navigator
-                                                                    .pushReplacement(
+                                                                Navigator.push(
                                                                   (context),
                                                                   MaterialPageRoute(
                                                                     builder:
