@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
+import 'package:gestiondesrendezvoushopitals/ui/liste-patient-pour-secretaire/listePatientPourSecretaire.dart';
 import 'package:gestiondesrendezvoushopitals/ui/signUp/signUp.dart';
+import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBord.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -21,7 +23,7 @@ class _LoginState extends State<Login> {
     if (mdp == "1234") {
       switch (nom) {
         case 'patient':
-          Navigator.pushReplacement(
+          Navigator.push(
               (context),
               MaterialPageRoute(
                   builder: (context) => ListmedecinPourPatient()));
@@ -31,6 +33,22 @@ class _LoginState extends State<Login> {
               context,
               MaterialPageRoute(
                   builder: (context) => listeDesRendezVousPourMedecins()));
+          break;
+        case 'secretaire':
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => listePatientPourSecretaire(),
+            ),
+          );
+          break;
+        case 'admin':
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => tableauDeBord(),
+            ),
+          );
           break;
       }
     }

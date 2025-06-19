@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
+import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
 class notificationPush extends StatefulWidget {
@@ -13,6 +14,7 @@ class _notificationPushState extends State<notificationPush> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
         backgroundColor: Color(0xFF0CFAFA),
         toolbarHeight: 100,

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:gestiondesrendezvoushopitals/ui/medecins-dispo-rv/ListeMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/creneaux-disponibles/CreneauxDisponibles.dart';
 import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
-import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:intl/intl.dart';
 
-class PriseDeRendezVous extends StatefulWidget {
-  const PriseDeRendezVous({super.key});
+class AjouterRendezVousPourPatient extends StatefulWidget {
+  const AjouterRendezVousPourPatient({super.key});
 
   @override
-  State<PriseDeRendezVous> createState() => _PriseDeRendezVousState();
+  State<AjouterRendezVousPourPatient> createState() =>
+      _AjouterRendezVousPourPatientState();
 }
 
-class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
+class _AjouterRendezVousPourPatientState
+    extends State<AjouterRendezVousPourPatient> {
   DateTime selectedDate = DateTime.now();
 
   void _previousDate() {
@@ -36,21 +38,6 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
           child: AlertDialog(
             // content: Text('Rendez-vous pris avec succes'),
             actions: [
-              // Text("Rendez-vous pris avec succes"),
-              // TextButton(
-              //   child: Text('Annuler'),
-              //   onPressed: () {
-              //     Navigator.of(context).pop(); // Fermer le popup
-              //   },
-              // ),
-              // TextButton(
-              //   child: Text('Oui'),
-              //   onPressed: () {
-              //     Navigator.of(context).pop(); // Fermer
-              //     // 👉 Action à exécuter
-              //     print('Action confirmée');
-              //   },
-              // ),
               Container(
                 padding: EdgeInsets.only(left: 200),
                 child: ElevatedButton(
@@ -105,14 +92,23 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
   Widget build(BuildContext context) {
     String formattedDate =
         DateFormat('EEEE d MMMM yyyy', 'fr_FR').format(selectedDate).toString();
+    final List<String> medecins = [
+      'Dr Medoune Fall',
+      'Dr Mariete Dieng',
+      'Dr Fatoumata Sall',
+      'Dr Moussa Fall',
+    ];
+
+    String selectedMedecin = 'Dr Medoune Fall';
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       drawer: Menu(),
       appBar: AppBar(
         backgroundColor: Color(0xFF0CFAFA),
         toolbarHeight: 100,
         title: Text(
-          "Prendre un rendez-vous \navec le medecin",
+          "Ajouter un rv \npour patients",
         ),
         actions: [
           Row(
@@ -141,13 +137,15 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(right: 10),
+                padding: EdgeInsets.only(
+                  right: 10,
+                ),
                 child: ClipOval(
                   child: UserMenu(),
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -161,13 +159,13 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                     ClipOval(
                       child: Image.asset(
                         "assets/images/med1.jpg",
-                        width: 100,
-                        height: 100,
+                        width: 75,
+                        height: 75,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Text(
-                      "Dr Medoune Fall",
+                      "Medoune Fall",
                       style: TextStyle(
                         fontFamily: "poppins",
                         fontWeight: FontWeight.bold,
@@ -179,37 +177,52 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
               ),
               Center(
                 child: Container(
+                  width: 300,
+                  child: Divider(
+                    color: Colors.black,
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Column(
                         children: [
-                          Text(
-                            "Specialte : ",
-                            style: TextStyle(
-                                fontFamily: "poppins",
-                                fontWeight: FontWeight.w400,
-                                fontSize: 17),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Medecin : ",
+                                style: TextStyle(
+                                    fontFamily: "poppins",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "Cardiologue",
-                            style: TextStyle(
-                                fontFamily: "poppins",
-                                fontWeight: FontWeight.w600,
-                                fontSize: 17),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.place),
-                          Text(
-                            "Hopital Fann",
-                            style: TextStyle(
-                                fontFamily: "poppins",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20),
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            child: DropdownButtonFormField<String>(
+                              value: selectedMedecin,
+                              items: medecins.map((String medecin) {
+                                return DropdownMenuItem<String>(
+                                  value: medecin,
+                                  child: Text(medecin),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedMedecin = newValue!;
+                                  print(
+                                      'Médecin sélectionné : $selectedMedecin');
+                                });
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -218,7 +231,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                           width: 300,
                           child: Divider(
                             color: Colors.black,
-                            thickness: 2,
+                            thickness: 1,
                           ),
                         ),
                       ),

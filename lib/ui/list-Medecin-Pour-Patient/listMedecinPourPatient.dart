@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/PriseDErendezVous.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
@@ -13,6 +14,7 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
         backgroundColor: Color(0xFF0CFAFA),
         toolbarHeight: 100,

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/DetailsHistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
+import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/detailsRendezVous.dart';
 
-class HistoriqueRendezVousPourPatients extends StatefulWidget {
-  const HistoriqueRendezVousPourPatients({super.key});
+class listeDesRendezVousDisponiblePourAdmin extends StatefulWidget {
+  const listeDesRendezVousDisponiblePourAdmin({super.key});
 
   @override
-  State<HistoriqueRendezVousPourPatients> createState() =>
-      _HistoriqueRendezVousPourPatientsState();
+  State<listeDesRendezVousDisponiblePourAdmin> createState() =>
+      _listeDesRendezVousDisponiblePourAdminState();
 }
 
-class _HistoriqueRendezVousPourPatientsState
-    extends State<HistoriqueRendezVousPourPatients> {
+class _listeDesRendezVousDisponiblePourAdminState
+    extends State<listeDesRendezVousDisponiblePourAdmin> {
   final List<String> dates = [
     '12 mars 2025 - 10:00',
     '15 mars 2025 - 14:30',
@@ -57,7 +59,7 @@ class _HistoriqueRendezVousPourPatientsState
         backgroundColor: Color(0xFF0CFAFA),
         toolbarHeight: 100,
         title: Text(
-          "Liste de mes \nrendez-vous",
+          "Liste des \nrendez-vous",
         ),
         actions: [
           Row(
@@ -152,7 +154,7 @@ class _HistoriqueRendezVousPourPatientsState
                             (context),
                             MaterialPageRoute(
                               builder: (context) =>
-                                  DetailsRendezVousPourPatients(),
+                                  DetailsRendezVousPourPatientsAdmin(),
                             ),
                           );
                         },
@@ -860,6 +862,29 @@ class _HistoriqueRendezVousPourPatientsState
                               ],
                             ),
                           ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Container(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.greenAccent,
+                            shadowColor: Colors.black.withOpacity(0.1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              (context),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      AjouterRendezVousPourPatientParAdmin()),
+                            );
+                          },
+                          child: Text("Ajouter"),
                         ),
                       ),
                     ],

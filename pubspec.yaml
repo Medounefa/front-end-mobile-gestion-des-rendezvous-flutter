@@ -39,7 +39,9 @@ dependencies:
 dev_dependencies:
   flutter_native_splash: 2.4.4
   flutter_inner_shadow: ^0.0.1
+  fl_chart: 0.71.0
   intl: ^0.20.2
+  table_calendar: ^3.2.0
   flutter_test:
     sdk: flutter
 
@@ -58,7 +60,24 @@ flutter:
   assets:
    - assets/images/logo.jpg
    - assets/images/med1.jpg 
-   - assets/images/right.png
+   - assets/images/right.png 
+   - assets/images/ourro.png
+   - assets/images/stlouis.png
+   - assets/images/km.png
+   - assets/images/dalaljam.png
+   - assets/images/fannun.png
+   - assets/images/grandyoff.png
+   - assets/images/dentec.png
+   - assets/images/ouakam.png
+   - assets/images/principal.png
+   - assets/images/diamniadio.png
+   - assets/images/medical-appointment.png  
+   - assets/images/customer-support.png
+   - assets/images/examination.png
+   - assets/images/doctor.png
+   - assets/images/hospital.png
+   - assets/images/departement.png
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

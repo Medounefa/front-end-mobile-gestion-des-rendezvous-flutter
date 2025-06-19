@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/detailsDuRendezVousDuPatientPourMedecin.dart';
+import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
 class listeDesRendezVousPourMedecins extends StatefulWidget {
@@ -15,6 +16,7 @@ class _listeDesRendezVousPourMedecinsState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
         title: Text("Liste des rendez-vous "),
         backgroundColor: Color(0xFF0CFAFA),

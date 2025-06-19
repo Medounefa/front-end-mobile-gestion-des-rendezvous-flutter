@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/listeDesRendezVousDisponiblePourAdmin.dart';
 
-class DetailsRendezVousPourPatients extends StatefulWidget {
-  const DetailsRendezVousPourPatients({super.key});
+class DetailsRendezVousPourPatientsAdmin extends StatefulWidget {
+  const DetailsRendezVousPourPatientsAdmin({super.key});
 
   @override
-  State<DetailsRendezVousPourPatients> createState() =>
-      _DetailsRendezVousPourPatientsState();
+  State<DetailsRendezVousPourPatientsAdmin> createState() =>
+      _DetailsRendezVousPourPatientsAdminState();
 }
 
-class _DetailsRendezVousPourPatientsState
-    extends State<DetailsRendezVousPourPatients> {
+class _DetailsRendezVousPourPatientsAdminState
+    extends State<DetailsRendezVousPourPatientsAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -254,7 +255,7 @@ class _DetailsRendezVousPourPatientsState
                           (context),
                           MaterialPageRoute(
                             builder: (context) =>
-                                HistoriqueRendezVousPourPatients(),
+                                listeDesRendezVousDisponiblePourAdmin(),
                           ),
                         );
                       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
+import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/notifications/notificationPush.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
@@ -89,6 +90,7 @@ class _ConsultionDuPatientParLeMedecinState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
       appBar: AppBar(
         title: Text("consulte le patient"),
         backgroundColor: Color(0xFF0CFAFA),
