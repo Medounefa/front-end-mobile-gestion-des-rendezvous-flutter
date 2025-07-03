@@ -18,10 +18,14 @@ class _detailsMedecinPourAdminState extends State<detailsMedecinPourAdmin> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Details \nmedecins",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -32,6 +36,7 @@ class _detailsMedecinPourAdminState extends State<detailsMedecinPourAdmin> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -40,7 +45,7 @@ class _detailsMedecinPourAdminState extends State<detailsMedecinPourAdmin> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -162,7 +167,7 @@ class _detailsMedecinPourAdminState extends State<detailsMedecinPourAdmin> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.black.withOpacity(0.1),
-                            backgroundColor: Color(0xFF0CFAFA),
+                            backgroundColor: Color(0xFF4CAF50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -177,7 +182,7 @@ class _detailsMedecinPourAdminState extends State<detailsMedecinPourAdmin> {
                           },
                           child: Text(
                             "Attribue le un secretaire",
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),

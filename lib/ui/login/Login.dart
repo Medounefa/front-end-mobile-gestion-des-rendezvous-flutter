@@ -3,6 +3,9 @@ import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMe
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-patient-pour-secretaire/listePatientPourSecretaire.dart';
 import 'package:gestiondesrendezvoushopitals/ui/signUp/signUp.dart';
+import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardMedecin.dart';
+import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardPatient.dart';
+import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardSecretaire.dart';
 import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBord.dart';
 
 class Login extends StatefulWidget {
@@ -23,22 +26,18 @@ class _LoginState extends State<Login> {
     if (mdp == "1234") {
       switch (nom) {
         case 'patient':
-          Navigator.push(
-              (context),
-              MaterialPageRoute(
-                  builder: (context) => ListmedecinPourPatient()));
+          Navigator.push((context),
+              MaterialPageRoute(builder: (context) => tableauDeBoardPatient()));
           break;
         case 'medecin':
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => listeDesRendezVousPourMedecins()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => tableauDeBoardMedecin()));
           break;
         case 'secretaire':
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => listePatientPourSecretaire(),
+              builder: (context) => tableauDeBoardSecretaire(),
             ),
           );
           break;
@@ -58,7 +57,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Color(0xFF0CFAFA),
+      backgroundColor: Color(0xFF007BFF),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -95,7 +94,9 @@ class _LoginState extends State<Login> {
                           child: Text(
                             "Connectez-vous",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                color: Color(0xFF333333),
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -130,7 +131,7 @@ class _LoginState extends State<Login> {
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  Color(0xFF0CFAFA), // couleur de fond
+                                  Color(0xFF4CAF50), // couleur de fond
                               foregroundColor: Colors.white, // couleur du texte
                               padding: EdgeInsets.symmetric(
                                   horizontal: 32, vertical: 16),
@@ -141,7 +142,7 @@ class _LoginState extends State<Login> {
                             child: Text(
                               'Se connecter',
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Color(0xFFFFFFFF),
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),

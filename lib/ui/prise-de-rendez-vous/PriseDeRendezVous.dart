@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/creneaux-disponibles/CreneauxDisponibles.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:intl/intl.dart';
 
@@ -109,10 +109,14 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "Prendre un rendez-vous \navec le medecin",
+          "Prendre un \nrendez-vous \navec le medecin",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -123,6 +127,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -131,7 +136,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -172,6 +177,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                         fontFamily: "poppins",
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
+                        color: Color(0xFF212121),
                       ),
                     ),
                   ],
@@ -189,6 +195,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                             style: TextStyle(
                                 fontFamily: "poppins",
                                 fontWeight: FontWeight.w400,
+                                color: Color(0xFF212121),
                                 fontSize: 17),
                           ),
                           Text(
@@ -209,6 +216,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                             style: TextStyle(
                                 fontFamily: "poppins",
                                 fontWeight: FontWeight.w700,
+                                color: Color(0xFF212121),
                                 fontSize: 20),
                           ),
                         ],
@@ -230,6 +238,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                               style: TextStyle(
                                   fontFamily: "poppins",
                                   fontWeight: FontWeight.w700,
+                                  color: Color(0xFF212121),
                                   fontSize: 18),
                             ),
                           ],
@@ -268,6 +277,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                             style: TextStyle(
                                 fontFamily: "poppins",
                                 fontWeight: FontWeight.bold,
+                                color: Color(0xFF212121),
                                 fontSize: 18),
                           ),
                           Column(
@@ -287,6 +297,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                                 style: TextStyle(
                                     fontFamily: "poppins",
                                     fontWeight: FontWeight.bold,
+                                    color: Color(0xFF212121),
                                     fontSize: 18),
                               ),
                               Container(
@@ -308,7 +319,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                               Container(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF0CFAFA),
+                                    backgroundColor: Color(0xFF4CAF50),
                                     shadowColor: Colors.transparent,
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
@@ -319,7 +330,7 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
                                       _showConfirmationDialog(context),
                                   child: Text(
                                     "Confirmer",
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ),

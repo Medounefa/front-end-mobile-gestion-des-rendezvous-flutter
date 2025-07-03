@@ -17,8 +17,14 @@ class _detailsPatientState extends State<detailsPatient> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        title: Text("Details du \npatient"),
-        backgroundColor: Color(0xFF0CFAFA),
+        title: Text(
+          "Details du \npatient",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         actions: [
           Row(
@@ -36,6 +42,7 @@ class _detailsPatientState extends State<detailsPatient> {
                       Icon(
                         Icons.notifications,
                         size: 40,
+                        color: Color(0xFF2196F3),
                       ),
                       Positioned(
                         top: 2,
@@ -44,7 +51,7 @@ class _detailsPatientState extends State<detailsPatient> {
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Color(0xFFFFB74D),
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 1.2),
                           ),
@@ -167,7 +174,7 @@ class _detailsPatientState extends State<detailsPatient> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.black.withOpacity(0.1),
-                            backgroundColor: Color(0xFF0CFAFA),
+                            backgroundColor: Color(0xFF4CAF50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -182,7 +189,9 @@ class _detailsPatientState extends State<detailsPatient> {
                           },
                           child: Text(
                             "Programmer un rendez-vous",
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color: Color(0xFFFFFFFF),
+                            ),
                           ),
                         ),
                       ),

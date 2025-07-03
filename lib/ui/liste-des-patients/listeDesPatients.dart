@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-patients/AjouterUnPatient.dart';
+import 'package:gestiondesrendezvoushopitals/ui/liste-des-patients/detailsDuPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-patient-pour-secretaire/ajoutPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-patient-pour-secretaire/detailsPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
@@ -25,10 +26,14 @@ class _listeDesPatientsState extends State<listeDesPatients> {
       resizeToAvoidBottomInset: true,
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Liste de \npatients",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -39,6 +44,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -47,7 +53,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -93,10 +99,13 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                   Container(
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Icon(Icons.search),
+                      child: Icon(
+                        Icons.search,
+                        color: Color(0xFFFFFFFF),
+                      ),
                       style: ElevatedButton.styleFrom(
                         // maximumSize: Size(150, 50),
-                        backgroundColor: Color(0xFF0CFAFA),
+                        backgroundColor: Color(0xFF4CAF50),
                         padding:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -176,8 +185,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -196,13 +204,14 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                       (context),
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              detailsPatient()),
+                                                              detailsDuPatient()),
                                                     );
                                                   },
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -251,8 +260,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -270,7 +278,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -319,8 +328,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -338,7 +346,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -386,8 +395,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -405,7 +413,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -454,8 +463,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -473,7 +481,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -522,8 +531,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -541,7 +549,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -589,8 +598,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -608,7 +616,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -657,8 +666,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -676,7 +684,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -725,8 +734,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -744,7 +752,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -792,8 +801,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -811,7 +819,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -860,8 +869,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -879,7 +887,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -928,8 +937,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                 height: 40,
                                                 width: 100,
                                                 decoration: BoxDecoration(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 235, 235),
+                                                    color: Color(0xFF4CAF50),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
@@ -947,7 +955,8 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                   child: Text(
                                                     "voir",
                                                     style: TextStyle(
-                                                        color: Colors.blueGrey,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -968,7 +977,7 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                             TextButton(
                                               style: TextButton.styleFrom(
                                                 backgroundColor:
-                                                    Colors.greenAccent,
+                                                    Color(0xFF4CAF50),
                                                 shadowColor: Colors.black
                                                     .withOpacity(0.1),
                                                 shape: RoundedRectangleBorder(
@@ -984,7 +993,11 @@ class _listeDesPatientsState extends State<listeDesPatients> {
                                                           ajouterUnPatient()),
                                                 );
                                               },
-                                              child: Text("Ajouter"),
+                                              child: Text(
+                                                "Ajouter",
+                                                style: TextStyle(
+                                                    color: Color(0xFFFFFFFF)),
+                                              ),
                                             ),
                                           ],
                                         ),

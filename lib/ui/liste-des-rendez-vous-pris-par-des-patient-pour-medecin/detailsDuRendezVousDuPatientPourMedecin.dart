@@ -18,9 +18,15 @@ class _DetailsdurendezvousdupatientpourmedecinState
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 125,
-        title: Text("details du \nrendez-vous"),
+        title: Text(
+          "details du \nrendez-vous",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
         actions: [
           Row(
             children: [
@@ -30,6 +36,7 @@ class _DetailsdurendezvousdupatientpourmedecinState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -38,7 +45,7 @@ class _DetailsdurendezvousdupatientpourmedecinState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -87,10 +94,11 @@ class _DetailsdurendezvousdupatientpourmedecinState
                         width: 200,
                         height: 35,
                         decoration: BoxDecoration(
-                            color: Color(0xFF0CFAFA),
+                            color: Color(0xFF007BFF),
                             borderRadius: BorderRadius.circular(5)),
                         child: Text(
                           "21 Aout 2025 - 10:00",
+                          style: TextStyle(color: Color(0xFFFFFFFF)),
                         ),
                       ),
                     ],
@@ -276,6 +284,54 @@ class _DetailsdurendezvousdupatientpourmedecinState
                           height: 1,
                           color: const Color.fromARGB(47, 0, 0, 0),
                         ),
+                        Container(
+                          padding: EdgeInsets.only(left: 20, top: 8),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Status",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.yellow,
+                                        shadowColor:
+                                            Colors.black.withOpacity(0.1),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        )),
+                                    child: Text(
+                                      "En attente",
+                                      style:
+                                          TextStyle(color: Color(0xFF000000)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          height: 1,
+                          color: const Color.fromARGB(47, 0, 0, 0),
+                        ),
                         SizedBox(
                           height: 20,
                         ),
@@ -372,7 +428,11 @@ class _DetailsdurendezvousdupatientpourmedecinState
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         )),
-                                    child: Text("Reprogrammer"),
+                                    child: Text(
+                                      "Reprogrammer",
+                                      style:
+                                          TextStyle(color: Color(0xFF000000)),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -391,14 +451,18 @@ class _DetailsdurendezvousdupatientpourmedecinState
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.greenAccent,
+                                        backgroundColor: Color(0xFF4CAF50),
                                         shadowColor:
                                             Colors.black.withOpacity(0.1),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         )),
-                                    child: Text("Consulter"),
+                                    child: Text(
+                                      "Consulter",
+                                      style:
+                                          TextStyle(color: Color(0xFFFFFFFF)),
+                                    ),
                                   ),
                                 ],
                               ),

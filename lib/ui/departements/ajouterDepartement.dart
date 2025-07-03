@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/departements.dart/departementsDispo.dart';
+import 'package:gestiondesrendezvoushopitals/ui/departements/departementsDispo.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
@@ -16,10 +16,14 @@ class _ajoutDepartementState extends State<ajoutDepartement> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Ajouter un \ndepartement",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -30,6 +34,7 @@ class _ajoutDepartementState extends State<ajoutDepartement> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -38,7 +43,7 @@ class _ajoutDepartementState extends State<ajoutDepartement> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -107,7 +112,7 @@ class _ajoutDepartementState extends State<ajoutDepartement> {
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: Colors.greenAccent,
+                            backgroundColor: Color(0xFF4CAF50),
                             shadowColor: Colors.black.withOpacity(0.1),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
@@ -120,7 +125,10 @@ class _ajoutDepartementState extends State<ajoutDepartement> {
                                   builder: (context) => departementsDispo()),
                             );
                           },
-                          child: Text("Ajouter"),
+                          child: Text(
+                            "Ajouter",
+                            style: TextStyle(color: Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ],
                     ),

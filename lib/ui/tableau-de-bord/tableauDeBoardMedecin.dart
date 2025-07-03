@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/notifications/notificationPush.dart';
-import 'package:gestiondesrendezvoushopitals/ui/users/UserInfoCard.dart';
-import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
-class tableauDeBord extends StatefulWidget {
-  const tableauDeBord({super.key});
+import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/users/UserInfoCard.dart';
+
+class tableauDeBoardMedecin extends StatefulWidget {
+  const tableauDeBoardMedecin({super.key});
 
   @override
-  State<tableauDeBord> createState() => _tableauDeBordState();
+  State<tableauDeBoardMedecin> createState() => _tableauDeBoardMedecinState();
 }
 
-class _tableauDeBordState extends State<tableauDeBord> {
+class _tableauDeBoardMedecinState extends State<tableauDeBoardMedecin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
           color: Color(0xFFFFFFFF), // icône burger noir
         ),
         title: Text(
-          "Tableau de \nbord",
+          "Tableau de \nbord medecin",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
           ),
@@ -80,8 +82,8 @@ class _tableauDeBordState extends State<tableauDeBord> {
         child: Column(
           children: [
             UserInfoCard(
-              nomUtilisateur: "Admin",
-              role: "admin",
+              nomUtilisateur: "Dr Medoune Fall",
+              role: "Medecin",
               imagePath: "assets/images/medecin1.png",
             ),
             Expanded(
@@ -109,6 +111,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              alignment: Alignment.center,
                               child: ClipOval(
                                 child: Image.asset(
                                   "assets/images/examination.png",
@@ -119,7 +122,8 @@ class _tableauDeBordState extends State<tableauDeBord> {
                               ),
                             ),
                             Text(
-                              "Patients",
+                              "Nbre de \nconsultations",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color(0xFF212121),
                                   fontFamily: 'poppins',
@@ -127,7 +131,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
                                   fontSize: 20),
                             ),
                             Text(
-                              "15",
+                              "17",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF666666),
@@ -154,6 +158,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              alignment: Alignment.center,
                               child: ClipOval(
                                 child: Image.asset(
                                   "assets/images/doctor.png",
@@ -164,7 +169,8 @@ class _tableauDeBordState extends State<tableauDeBord> {
                               ),
                             ),
                             Text(
-                              "Medecins",
+                              "Consultations \nterminées",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: 'poppins',
@@ -198,50 +204,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              child: ClipOval(
-                                child: Image.asset(
-                                  "assets/images/customer-support.png",
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              "Secretaires",
-                              style: TextStyle(
-                                  color: Color(0xFF212121),
-                                  fontFamily: 'poppins',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            Text(
-                              "25",
-                              style: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  fontFamily: 'poppins'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black.withOpacity(0.1),
-                                offset: Offset(1, 2),
-                              ),
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
+                              alignment: Alignment.center,
                               child: ClipOval(
                                 child: Image.asset(
                                   "assets/images/medical-appointment.png",
@@ -252,7 +215,8 @@ class _tableauDeBordState extends State<tableauDeBord> {
                               ),
                             ),
                             Text(
-                              "Rendez-vous",
+                              "Patients \nabsents",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color(0xFF212121),
                                   fontFamily: 'poppins',
@@ -260,7 +224,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
                                   fontSize: 20),
                             ),
                             Text(
-                              "25",
+                              "5",
                               style: TextStyle(
                                   color: Color(0xFF666666),
                                   fontWeight: FontWeight.bold,
@@ -270,92 +234,60 @@ class _tableauDeBordState extends State<tableauDeBord> {
                           ],
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black.withOpacity(0.1),
-                                offset: Offset(1, 2),
-                              ),
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: ClipOval(
-                                child: Image.asset(
-                                  "assets/images/hospital.png",
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            (context),
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    listeDesRendezVousPourMedecins()),
+                          );
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Color(0xFFF5F5F5),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  spreadRadius: 2,
+                                  blurRadius: 2,
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: Offset(1, 2),
+                                ),
+                              ]),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    "assets/images/hospital.png",
+                                    width: 50,
+                                    height: 50,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "Hopitaux",
-                              style: TextStyle(
-                                  color: Color(0xFF212121),
-                                  fontFamily: 'poppins',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            Text(
-                              "25",
-                              style: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  fontFamily: 'poppins'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF5F5F5),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black.withOpacity(0.1),
-                                offset: Offset(1, 2),
+                              Text(
+                                "Rendez-vous \ndu jours",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xFF212121),
+                                    fontFamily: 'poppins',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
                               ),
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: ClipOval(
-                                child: Image.asset(
-                                  "assets/images/departement.png",
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
+                              Text(
+                                "25",
+                                style: TextStyle(
+                                    color: Color(0xFF666666),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25,
+                                    fontFamily: 'poppins'),
                               ),
-                            ),
-                            Text(
-                              "Departements : ",
-                              style: TextStyle(
-                                  color: Color(0xFF212121),
-                                  fontFamily: 'poppins',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                            Text(
-                              "25",
-                              style: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  fontFamily: 'poppins'),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

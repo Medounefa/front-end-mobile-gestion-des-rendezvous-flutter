@@ -18,10 +18,14 @@ class _listeDisponibilitesCalendrierState
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "liste des \nDisponibilites",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -32,6 +36,7 @@ class _listeDisponibilitesCalendrierState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -40,7 +45,7 @@ class _listeDisponibilitesCalendrierState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -85,7 +90,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -102,6 +107,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Medoune Fall",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Lundi 02 JUIN 2025",
                                   style: TextStyle(
@@ -112,19 +126,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 10:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
                                       color: Colors.green,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
                                     "Disponible",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -150,7 +163,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -167,6 +180,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Saliou Faye",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Lundi 02 Aout 2025",
                                   style: TextStyle(
@@ -177,19 +199,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 11:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.grey,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
                                     "Reserve",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -215,7 +236,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -232,6 +253,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Marie Dieng",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Lundi 11 Septembre 2025",
                                   style: TextStyle(
@@ -242,19 +272,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("15:00 - 16:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
                                       color: Colors.green,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
                                     "Disponible",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -280,7 +309,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -297,6 +326,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Babacar Sene",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Lundi 04 Octobre 2025",
                                   style: TextStyle(
@@ -307,19 +345,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("11:00 - 13:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.grey,
+                                      color: Colors.green,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    "Reserve",
+                                    "Disponible",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -345,7 +382,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -362,6 +399,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Seynabou Faye",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Jeudi 02 Novembre 2025",
                                   style: TextStyle(
@@ -372,19 +418,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 10:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    "Disponible",
+                                    "Reserve",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -410,7 +455,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -427,6 +472,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Medoune Gaye",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Vendredi 03 Septembre 2024",
                                   style: TextStyle(
@@ -437,19 +491,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 10:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.grey,
+                                      color: Colors.green,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    "Reserve",
+                                    "Disponible",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -475,7 +528,7 @@ class _listeDisponibilitesCalendrierState
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -492,6 +545,15 @@ class _listeDisponibilitesCalendrierState
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Dr Mamadou Ndiaye",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Text(
                                   "Jeudi 01 Mai 2024",
                                   style: TextStyle(
@@ -502,19 +564,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 10:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    "Disponible",
+                                    "Reserve",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -558,6 +619,15 @@ class _listeDisponibilitesCalendrierState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
+                                  "Dr Ramata Faye",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
                                   "Mardi 11 JUIN 2025",
                                   style: TextStyle(
                                       fontSize: 12,
@@ -567,19 +637,18 @@ class _listeDisponibilitesCalendrierState
                                   height: 5,
                                 ),
                                 Text("09:00 - 10:00 "),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  padding: EdgeInsets.all(2),
+                                  padding: EdgeInsets.all(5),
                                   margin: EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                      color: Colors.grey,
+                                      color: Colors.green,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
-                                    "Reserve",
+                                    "Disponible",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ],
@@ -604,7 +673,7 @@ class _listeDisponibilitesCalendrierState
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: Colors.greenAccent,
+                          backgroundColor: Color(0xFF4CAF50),
                           shadowColor: Colors.black.withOpacity(0.1),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
@@ -618,7 +687,10 @@ class _listeDisponibilitesCalendrierState
                                     AjouterDisponibiliteCalendrier()),
                           );
                         },
-                        child: Text("Ajoute une disponibilite"),
+                        child: Text(
+                          "Ajoute une disponibilite",
+                          style: TextStyle(color: Color(0xFFFFFFFF)),
+                        ),
                       ),
                       SizedBox(
                         height: 15,

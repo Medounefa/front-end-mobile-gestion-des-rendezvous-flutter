@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/departements.dart/departementsDispo.dart';
+import 'package:gestiondesrendezvoushopitals/ui/departements/departementsDispo.dart';
 import 'package:gestiondesrendezvoushopitals/ui/disponibiltes-calendrier/AjouterDisponibiliteCalendrier.dart';
 import 'package:gestiondesrendezvoushopitals/ui/disponibiltes-calendrier/listeDisponibilitesCalendrier.dart';
 import 'package:gestiondesrendezvoushopitals/ui/hopitaux/listeHopitaux.dart';
@@ -24,6 +24,7 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Color(0xFF1565C0),
       child: Padding(
         padding: EdgeInsets.all(10),
         child: ListView(
@@ -41,15 +42,24 @@ class _MenuState extends State<Menu> {
                       ),
                     ),
                     Container(
-                      child: Text("Adiministrateur"),
+                      child: Text(
+                        "Adiministrateur",
+                        style: TextStyle(color: Color(0xFFFFFFFF)),
+                      ),
                     )
                   ],
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.dashboard),
-              title: Text("Tableau de bord"),
+              leading: Icon(
+                Icons.dashboard,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Tableau de bord",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -58,8 +68,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.local_hospital),
-              title: Text("Hopitaux"),
+              leading: Icon(
+                Icons.local_hospital,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Hopitaux",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -68,8 +84,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.local_fire_department_sharp),
-              title: Text("Departement"),
+              leading: Icon(
+                Icons.local_fire_department_sharp,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Departement",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -78,8 +100,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.vaccines),
-              title: Text("Medecins"),
+              leading: Icon(
+                Icons.vaccines,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Medecins",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -89,8 +117,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.person_outline),
-              title: Text("Secretaire"),
+              leading: Icon(
+                Icons.person_outline,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Secretaire",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -101,8 +135,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.group),
-              title: Text("Patients"),
+              leading: Icon(
+                Icons.group,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Patients",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -113,8 +153,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.assignment),
-              title: Text("Rendez-vous"),
+              leading: Icon(
+                Icons.assignment,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Rendez-vous",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -125,8 +171,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.calendar_today),
-              title: Text("Calendrier / disponibilites"),
+              leading: Icon(
+                Icons.calendar_today,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Calendrier / disponibilites",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),
@@ -136,8 +188,14 @@ class _MenuState extends State<Menu> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.note),
-              title: Text("Rapports"),
+              leading: Icon(
+                Icons.note,
+                color: Color(0xFFBBDEFB),
+              ),
+              title: Text(
+                "Rapports",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
               onTap: () {
                 Navigator.push(
                   (context),

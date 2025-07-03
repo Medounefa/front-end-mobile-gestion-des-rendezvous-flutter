@@ -67,10 +67,14 @@ class _listeHopitauxState extends State<listeHopitaux> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "liste des hopitaux \ndisponibles",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -81,6 +85,7 @@ class _listeHopitauxState extends State<listeHopitaux> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -89,7 +94,7 @@ class _listeHopitauxState extends State<listeHopitaux> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -136,7 +141,7 @@ class _listeHopitauxState extends State<listeHopitaux> {
             padding: EdgeInsets.all(20),
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF0CFAFA),
+                backgroundColor: Color(0xFF4CAF50),
               ),
               onPressed: () {
                 Navigator.push(
@@ -144,8 +149,14 @@ class _listeHopitauxState extends State<listeHopitaux> {
                   MaterialPageRoute(builder: (context) => ajoutHopital()),
                 );
               },
-              icon: Icon(Icons.add),
-              label: Text("Ajouter un hôpital"),
+              icon: Icon(
+                Icons.add,
+                color: Color(0xFFFFFFFF),
+              ),
+              label: Text(
+                "Ajouter un hôpital",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
             ),
           ),
         ],

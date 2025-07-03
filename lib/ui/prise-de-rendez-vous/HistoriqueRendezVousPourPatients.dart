@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/DetailsHistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 
 class HistoriqueRendezVousPourPatients extends StatefulWidget {
@@ -54,10 +54,14 @@ class _HistoriqueRendezVousPourPatientsState
       resizeToAvoidBottomInset: true,
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Liste de mes \nrendez-vous",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -68,6 +72,7 @@ class _HistoriqueRendezVousPourPatientsState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -76,7 +81,7 @@ class _HistoriqueRendezVousPourPatientsState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -125,10 +130,13 @@ class _HistoriqueRendezVousPourPatientsState
                   Container(
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Icon(Icons.search),
+                      child: Icon(
+                        Icons.search,
+                        color: Color(0xFFFFFFFF),
+                      ),
                       style: ElevatedButton.styleFrom(
                         // maximumSize: Size(150, 50),
-                        backgroundColor: Color(0xFF0CFAFA),
+                        backgroundColor: Color(0xFF4CAF50),
                         padding:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -140,19 +148,47 @@ class _HistoriqueRendezVousPourPatientsState
                 ],
               ),
               SizedBox(
-                height: 17,
+                height: 4,
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Row(
+                              children: [
+                                Spacer(),
+                                ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xFF4CAF50),
+                                  ),
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.add,
+                                    color: Color(0xFFFFFFFF),
+                                  ),
+                                  label: Text(
+                                    "Nouveau Rendez-vous",
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
                             (context),
                             MaterialPageRoute(
                               builder: (context) =>
-                                  DetailsRendezVousPourPatients(),
+                                  DetailsHistoriqueRendezVousPourPatients(),
                             ),
                           );
                         },
@@ -168,7 +204,7 @@ class _HistoriqueRendezVousPourPatientsState
                                     width: 328,
                                     height: 125,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Color(0xFFF5F5F5),
                                       border: Border.all(
                                         color: const Color.fromARGB(
                                             255, 121, 117, 117),
@@ -279,7 +315,8 @@ class _HistoriqueRendezVousPourPatientsState
                                                       child: Text(
                                                         st,
                                                         style: TextStyle(
-                                                            color: Colors.red,
+                                                            color: Color(
+                                                                0xFFFFFFFF),
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -311,7 +348,7 @@ class _HistoriqueRendezVousPourPatientsState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -453,7 +490,7 @@ class _HistoriqueRendezVousPourPatientsState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -597,7 +634,7 @@ class _HistoriqueRendezVousPourPatientsState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -734,7 +771,7 @@ class _HistoriqueRendezVousPourPatientsState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/DetailsHistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/detailsRendezVous.dart';
@@ -56,10 +56,14 @@ class _listeDesRendezVousDisponiblePourAdminState
       resizeToAvoidBottomInset: true,
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Liste des \nrendez-vous",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -70,6 +74,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -78,7 +83,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -127,10 +132,13 @@ class _listeDesRendezVousDisponiblePourAdminState
                   Container(
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Icon(Icons.search),
+                      child: Icon(
+                        Icons.search,
+                        color: Color(0xFFFFFFFF),
+                      ),
                       style: ElevatedButton.styleFrom(
                         // maximumSize: Size(150, 50),
-                        backgroundColor: Color(0xFF0CFAFA),
+                        backgroundColor: Color(0xFF4CAF50),
                         padding:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -170,7 +178,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                                     width: 328,
                                     height: 125,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Color(0xFFF5F5F5),
                                       border: Border.all(
                                         color: const Color.fromARGB(
                                             255, 121, 117, 117),
@@ -313,7 +321,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -455,7 +463,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -599,7 +607,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -736,7 +744,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                                   width: 328,
                                   height: 125,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFFF5F5F5),
                                     border: Border.all(
                                       color: const Color.fromARGB(
                                           255, 121, 117, 117),
@@ -870,7 +878,7 @@ class _listeDesRendezVousDisponiblePourAdminState
                       Container(
                         child: TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: Colors.greenAccent,
+                            backgroundColor: Color(0xFF4CAF50),
                             shadowColor: Colors.black.withOpacity(0.1),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
@@ -884,7 +892,10 @@ class _listeDesRendezVousDisponiblePourAdminState
                                       AjouterRendezVousPourPatientParAdmin()),
                             );
                           },
-                          child: Text("Ajouter"),
+                          child: Text(
+                            "Ajouter",
+                            style: TextStyle(color: Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ),
                     ],

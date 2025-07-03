@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/listeDesRendezVousDisponiblePourAdmin.dart';
 
@@ -18,10 +17,14 @@ class _DetailsRendezVousPourPatientsAdminState
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Details du  \nrendez-vous",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -32,6 +35,7 @@ class _DetailsRendezVousPourPatientsAdminState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -40,7 +44,7 @@ class _DetailsRendezVousPourPatientsAdminState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -90,9 +94,12 @@ class _DetailsRendezVousPourPatientsAdminState
                     height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
-                      color: Color(0xFF0CFAFA).withOpacity(0.2),
+                      color: Color(0xFF007BFF),
                     ),
-                    child: Text("12 mars 2025 - 10:00"),
+                    child: Text(
+                      "12 mars 2025 - 10:00",
+                      style: TextStyle(color: Color(0xFFFFFFFF)),
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
@@ -247,7 +254,7 @@ class _DetailsRendezVousPourPatientsAdminState
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: Color(0xFF0CFAFA),
+                        color: Color(0xFF007BFF),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextButton(
                       onPressed: () {
@@ -259,7 +266,10 @@ class _DetailsRendezVousPourPatientsAdminState
                           ),
                         );
                       },
-                      child: Text("retourner"),
+                      child: Text(
+                        "retourner",
+                        style: TextStyle(color: Color(0xFFFFFFFF)),
+                      ),
                     ),
                   ),
                   SizedBox(

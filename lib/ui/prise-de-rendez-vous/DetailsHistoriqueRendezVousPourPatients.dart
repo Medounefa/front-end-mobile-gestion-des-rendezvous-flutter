@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
 
-class DetailsRendezVousPourPatients extends StatefulWidget {
-  const DetailsRendezVousPourPatients({super.key});
+class DetailsHistoriqueRendezVousPourPatients extends StatefulWidget {
+  const DetailsHistoriqueRendezVousPourPatients({super.key});
 
   @override
-  State<DetailsRendezVousPourPatients> createState() =>
-      _DetailsRendezVousPourPatientsState();
+  State<DetailsHistoriqueRendezVousPourPatients> createState() =>
+      _DetailsHistoriqueRendezVousPourPatientsState();
 }
 
-class _DetailsRendezVousPourPatientsState
-    extends State<DetailsRendezVousPourPatients> {
+class _DetailsHistoriqueRendezVousPourPatientsState
+    extends State<DetailsHistoriqueRendezVousPourPatients> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Details du  \nrendez-vous",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -31,6 +35,7 @@ class _DetailsRendezVousPourPatientsState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -39,7 +44,7 @@ class _DetailsRendezVousPourPatientsState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -71,7 +76,7 @@ class _DetailsRendezVousPourPatientsState
               width: 313,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
+                color: Color(0xFFF5F5F5),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -89,9 +94,12 @@ class _DetailsRendezVousPourPatientsState
                     height: 35,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7),
-                      color: Color(0xFF0CFAFA).withOpacity(0.2),
+                      color: Color(0xFF007BFF),
                     ),
-                    child: Text("12 mars 2025 - 10:00"),
+                    child: Text(
+                      "12 mars 2025 - 10:00",
+                      style: TextStyle(color: Color(0xFFFFFFFF)),
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
@@ -244,21 +252,64 @@ class _DetailsRendezVousPourPatientsState
                       ],
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Color(0xFF0CFAFA),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          (context),
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                HistoriqueRendezVousPourPatients(),
-                          ),
-                        );
-                      },
-                      child: Text("retourner"),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 55, left: 55),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFF007BFF),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    (context),
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          HistoriqueRendezVousPourPatients(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "retourner",
+                                  style: TextStyle(
+                                    color: Color(0xFFFFFFFF),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.yellow,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: TextButton(
+                                onPressed: () {
+                                  // Navigator.push(
+                                  //   (context),
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) =>
+                                  //         HistoriqueRendezVousPourPatients(),
+                                  //   ),
+                                  // );
+                                },
+                                child: Text(
+                                  "Modifier",
+                                  style: TextStyle(
+                                    color: Color(0xFF000000),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(

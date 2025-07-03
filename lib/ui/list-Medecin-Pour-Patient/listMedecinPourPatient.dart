@@ -16,10 +16,14 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "Liste des medecins \ndisponibles",
+          "Liste des \nmedecins \ndisponibles",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -30,6 +34,7 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -38,7 +43,7 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -78,10 +83,13 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                   SizedBox(width: 5),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(Icons.search),
+                    child: Icon(
+                      Icons.search,
+                      color: Color(0xFFFFFFFF),
+                    ),
                     style: ElevatedButton.styleFrom(
                       maximumSize: Size(150, 50),
-                      backgroundColor: Color(0xFF0CFAFA),
+                      backgroundColor: Color(0xFF4CAF50),
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -207,35 +215,41 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {
-                                                                Navigator.push(
-                                                                  (context),
-                                                                  MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            PriseDeRendezVous(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.push(
+                                                                (context),
+                                                                MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          PriseDeRendezVous(),
+                                                                ),
+                                                              );
+                                                            },
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -347,26 +361,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -478,26 +498,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -609,26 +635,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -740,26 +772,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -870,26 +908,33 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                color: Color(
+                                                                    0xFFFFFFFF),
                                                               ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -1001,26 +1046,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),
@@ -1132,26 +1183,32 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                                                         Container(
                                                           height: 25,
                                                           child: ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                backgroundColor:
-                                                                    Color(
-                                                                        0xFF0CFAFA),
-                                                                shadowColor: Colors
-                                                                    .transparent,
-                                                                elevation: 0,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                5),
-                                                                    side: BorderSide
-                                                                        .none),
-                                                              ),
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                  "Prendez un RV")),
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFF4CAF50),
+                                                              shadowColor: Colors
+                                                                  .transparent,
+                                                              elevation: 0,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  side:
+                                                                      BorderSide
+                                                                          .none),
+                                                            ),
+                                                            onPressed: () {},
+                                                            child: Text(
+                                                              "Prendez un RV",
+                                                              style: TextStyle(
+                                                                  color: Color(
+                                                                      0xFFFFFFFF)),
+                                                            ),
+                                                          ),
                                                         )
                                                       ],
                                                     ),

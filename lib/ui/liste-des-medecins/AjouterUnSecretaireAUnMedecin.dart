@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/departements.dart/departementsDispo.dart';
+import 'package:gestiondesrendezvoushopitals/ui/departements/departementsDispo.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/ListeDesMedecinsPourAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/medecins-dispo-rv/ListeMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
@@ -20,10 +20,14 @@ class _ajouterUnSecretaireAUnMedecinState
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Ajouter un \nsecretairet",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -34,6 +38,7 @@ class _ajouterUnSecretaireAUnMedecinState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -42,7 +47,7 @@ class _ajouterUnSecretaireAUnMedecinState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -88,7 +93,9 @@ class _ajouterUnSecretaireAUnMedecinState
                       Text(
                         "Slectionnez un secretaire : ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
+                            color: Color(0xFF333333),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17),
                       ),
                     ],
                   ),
@@ -111,7 +118,7 @@ class _ajouterUnSecretaireAUnMedecinState
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: Colors.greenAccent,
+                            backgroundColor: Color(0xFF4CAF50),
                             shadowColor: Colors.black.withOpacity(0.1),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
@@ -125,7 +132,10 @@ class _ajouterUnSecretaireAUnMedecinState
                                       ListeDesMedecinsPourAdmin()),
                             );
                           },
-                          child: Text("Ajouter"),
+                          child: Text(
+                            "Ajouter",
+                            style: TextStyle(color: Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ],
                     ),

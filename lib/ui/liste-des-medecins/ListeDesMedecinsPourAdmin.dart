@@ -61,10 +61,14 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "listes des \nmedecins",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -75,6 +79,7 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -83,7 +88,7 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -124,10 +129,13 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                   SizedBox(width: 5),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(Icons.search),
+                    child: Icon(
+                      Icons.search,
+                      color: Color(0xFFFFFFFF),
+                    ),
                     style: ElevatedButton.styleFrom(
                       maximumSize: Size(150, 50),
-                      backgroundColor: Color(0xFF0CFAFA),
+                      backgroundColor: Color(0xFF4CAF50),
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -181,7 +189,7 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                 padding: EdgeInsets.all(20),
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF0CFAFA),
+                    backgroundColor: Color(0xFF4CAF50),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -190,8 +198,14 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                           builder: (context) => AjouterUnMedecin()),
                     );
                   },
-                  icon: Icon(Icons.add),
-                  label: Text("Ajouter un medecin"),
+                  icon: Icon(
+                    Icons.add,
+                    color: Color(0xFFFFFFFF),
+                  ),
+                  label: Text(
+                    "Ajouter un medecin",
+                    style: TextStyle(color: Color(0xFFFFFFFF)),
+                  ),
                 ),
               ),
             ],

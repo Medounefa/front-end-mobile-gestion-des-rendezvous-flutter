@@ -60,10 +60,14 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "listes des \nsecretaires",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -74,6 +78,7 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -82,7 +87,7 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -123,10 +128,13 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
                   SizedBox(width: 5),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(Icons.search),
+                    child: Icon(
+                      Icons.search,
+                      color: Color(0xFFFFFFFF),
+                    ),
                     style: ElevatedButton.styleFrom(
                       maximumSize: Size(150, 50),
-                      backgroundColor: Color(0xFF0CFAFA),
+                      backgroundColor: Color(0xFF4CAF50),
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -170,7 +178,7 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
                 padding: EdgeInsets.all(20),
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF0CFAFA),
+                    backgroundColor: Color(0xFF4CAF50),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -179,8 +187,14 @@ class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
                           builder: (context) => AjouterUnSecretaire()),
                     );
                   },
-                  icon: Icon(Icons.add),
-                  label: Text("Ajouter un secretaire"),
+                  icon: Icon(
+                    Icons.add,
+                    color: Color(0xFFFFFFFF),
+                  ),
+                  label: Text(
+                    "Ajouter un secretaire",
+                    style: TextStyle(color: Color(0xFFFFFFFF)),
+                  ),
                 ),
               ),
             ],

@@ -17,10 +17,14 @@ class _AjouterUnMedecinState extends State<AjouterUnMedecin> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
           "Ajouter un \nmedecins",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [
           Row(
@@ -31,6 +35,7 @@ class _AjouterUnMedecinState extends State<AjouterUnMedecin> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -39,7 +44,7 @@ class _AjouterUnMedecinState extends State<AjouterUnMedecin> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -245,7 +250,7 @@ class _AjouterUnMedecinState extends State<AjouterUnMedecin> {
                   Container(
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF0CFAFA),
+                        backgroundColor: Color(0xFF4CAF50),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -255,8 +260,14 @@ class _AjouterUnMedecinState extends State<AjouterUnMedecin> {
                                   ListeDesMedecinsPourAdmin()),
                         );
                       },
-                      icon: Icon(Icons.add),
-                      label: Text("Ajouter"),
+                      icon: Icon(
+                        Icons.add,
+                        color: Color(0xFFFFFFFF),
+                      ),
+                      label: Text(
+                        "Ajouter",
+                        style: TextStyle(color: Color(0xFFFFFFFF)),
+                      ),
                     ),
                   ),
                 ],

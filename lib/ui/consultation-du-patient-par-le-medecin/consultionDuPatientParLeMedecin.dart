@@ -92,8 +92,14 @@ class _ConsultionDuPatientParLeMedecinState
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        title: Text("consulte le patient"),
-        backgroundColor: Color(0xFF0CFAFA),
+        title: Text(
+          "consultation du  \npatient",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         actions: [
           Row(
@@ -111,6 +117,7 @@ class _ConsultionDuPatientParLeMedecinState
                       Icon(
                         Icons.notifications,
                         size: 40,
+                        color: Color(0xFF2196F3),
                       ),
                       Positioned(
                         top: 2,
@@ -119,7 +126,7 @@ class _ConsultionDuPatientParLeMedecinState
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Color(0xFFFFB74D),
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 1.2),
                           ),
@@ -207,6 +214,31 @@ class _ConsultionDuPatientParLeMedecinState
                         children: [
                           Text(
                             "Age : ",
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide(
+                                    color: const Color.fromARGB(47, 0, 0, 0),
+                                  )),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 13,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Sexe: ",
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.w600),
                           ),
@@ -332,13 +364,16 @@ class _ConsultionDuPatientParLeMedecinState
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.greenAccent,
+                                backgroundColor: Color(0xFF4CAF50),
                                 shadowColor: Colors.black.withOpacity(0.2),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 )),
                             onPressed: () => _showConfirmationDialog(context),
-                            child: Text("Valider"),
+                            child: Text(
+                              "Valider",
+                              style: TextStyle(color: Color(0xFFFFFFFF)),
+                            ),
                           ),
                         ],
                       ),

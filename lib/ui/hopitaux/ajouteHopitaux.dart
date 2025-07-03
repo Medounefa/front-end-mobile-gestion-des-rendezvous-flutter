@@ -34,11 +34,13 @@ class _ajoutHopitalState extends State<ajoutHopital> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
-        toolbarHeight: 100,
-        title: Text(
-          "Ajouter un \nhopital",
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
         ),
+        backgroundColor: Color(0xFF007BFF),
+        toolbarHeight: 100,
+        title: Text("Ajouter un \nhopital",
+            style: TextStyle(color: Color(0xFFFFFFFF))),
         actions: [
           Row(
             children: [
@@ -48,6 +50,7 @@ class _ajoutHopitalState extends State<ajoutHopital> {
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -56,7 +59,7 @@ class _ajoutHopitalState extends State<ajoutHopital> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -163,7 +166,7 @@ class _ajoutHopitalState extends State<ajoutHopital> {
                       children: [
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF0CFAFA),
+                            backgroundColor: Color(0xFF4CAF50),
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -172,8 +175,14 @@ class _ajoutHopitalState extends State<ajoutHopital> {
                                   builder: (context) => listeHopitaux()),
                             );
                           },
-                          icon: Icon(Icons.add),
-                          label: Text("Ajouter "),
+                          icon: Icon(
+                            Icons.add,
+                            color: Color(0xFFFFFFFF),
+                          ),
+                          label: Text(
+                            "Ajouter ",
+                            style: TextStyle(color: Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ],
                     ),

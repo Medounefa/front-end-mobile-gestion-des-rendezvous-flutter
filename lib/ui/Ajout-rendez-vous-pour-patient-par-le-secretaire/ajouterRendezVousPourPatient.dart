@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/medecins-dispo-rv/ListeMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/creneaux-disponibles/CreneauxDisponibles.dart';
-import 'package:gestiondesrendezvoushopitals/ui/historique-rendez-vous-pour-patients/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:intl/intl.dart';
 
@@ -105,10 +105,16 @@ class _AjouterRendezVousPourPatientState
       resizeToAvoidBottomInset: true,
       drawer: Menu(),
       appBar: AppBar(
-        backgroundColor: Color(0xFF0CFAFA),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "Ajouter un rv \npour patients",
+          "Ajouter un rv \npour patient",
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
+          ),
         ),
         actions: [
           Row(
@@ -119,6 +125,7 @@ class _AjouterRendezVousPourPatientState
                     Icon(
                       Icons.notifications,
                       size: 40,
+                      color: Color(0xFF2196F3),
                     ),
                     Positioned(
                       top: 2,
@@ -127,7 +134,7 @@ class _AjouterRendezVousPourPatientState
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Color(0xFFFFB74D),
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 1.2),
                         ),
@@ -321,7 +328,7 @@ class _AjouterRendezVousPourPatientState
                               Container(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF0CFAFA),
+                                    backgroundColor: Color(0xFF4CAF50),
                                     shadowColor: Colors.transparent,
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
@@ -332,7 +339,7 @@ class _AjouterRendezVousPourPatientState
                                       _showConfirmationDialog(context),
                                   child: Text(
                                     "Confirmer",
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Color(0xFFFFFFFF)),
                                   ),
                                 ),
                               ),

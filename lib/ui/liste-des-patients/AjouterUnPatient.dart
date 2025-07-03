@@ -17,8 +17,14 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        title: Text("Ajouter un \npatient"),
-        backgroundColor: Color(0xFF0CFAFA),
+        title: Text(
+          "Ajouter un \npatient",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
+        iconTheme: IconThemeData(
+          color: Color(0xFFFFFFFF), // icône burger noir
+        ),
+        backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         actions: [
           Row(
@@ -36,6 +42,7 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
                       Icon(
                         Icons.notifications,
                         size: 40,
+                        color: Color(0xFF2196F3),
                       ),
                       Positioned(
                         top: 2,
@@ -44,7 +51,7 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Color(0xFFFFB74D),
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 1.2),
                           ),
@@ -72,7 +79,7 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
           child: Container(
             width: 352,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xFFF5F5F5),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
@@ -241,7 +248,7 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.1),
-                          backgroundColor: Colors.greenAccent,
+                          backgroundColor: Color(0xFF4CAF50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -253,7 +260,10 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
                                 builder: (context) => listeDesPatients()),
                           );
                         },
-                        child: Text("Ajouter"),
+                        child: Text(
+                          "Ajouter",
+                          style: TextStyle(color: Color(0xFFFFFFFF)),
+                        ),
                       ),
                     ],
                   ),
