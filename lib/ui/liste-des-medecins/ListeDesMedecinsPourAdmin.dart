@@ -3,6 +3,7 @@ import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/AjouterUnMede
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/detailsMedecinPourAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/users/CreateUser.dart';
 
 class Medecins {
   final String profile;
@@ -194,8 +195,8 @@ class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
                   onPressed: () {
                     Navigator.push(
                       (context),
-                      MaterialPageRoute(
-                          builder: (context) => AjouterUnMedecin()),
+                      MaterialPageRoute(builder: (context) => Createuser()),
+                      // builder: (context) => AjouterUnMedecin()),
                     );
                   },
                   icon: Icon(

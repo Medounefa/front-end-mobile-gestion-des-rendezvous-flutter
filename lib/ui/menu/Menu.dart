@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
 import 'package:gestiondesrendezvoushopitals/ui/departements/departementsDispo.dart';
 import 'package:gestiondesrendezvoushopitals/ui/disponibiltes-calendrier/AjouterDisponibiliteCalendrier.dart';
 import 'package:gestiondesrendezvoushopitals/ui/disponibiltes-calendrier/listeDisponibilitesCalendrier.dart';
@@ -6,11 +7,12 @@ import 'package:gestiondesrendezvoushopitals/ui/hopitaux/listeHopitaux.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/ListeDesMedecinsPourAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-patients/listeDesPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-secretaire/listeDesSecretaire.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rapports-admin/ajouterUnRapport.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rapports-admin/rapportsAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/listeDesRendezVousDisponiblePourAdmin.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBord.dart';
 
 class Menu extends StatefulWidget {
@@ -21,191 +23,349 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  //addd
+  String? role;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserProfile();
+  }
+
+  Future<void> _loadUserProfile() async {
+    final userData = await ApiMobileRv.getUserProfile();
+    if (userData != null && userData.containsKey('role')) {
+      setState(() {
+        role = userData['role'];
+      });
+    }
+  }
+
+//fin add
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color(0xFF1565C0),
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: ListView(
-          children: [
-            DrawerHeader(
-              child: Container(
-                child: Column(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        "assets/images/med1.jpg",
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Adiministrateur",
-                        style: TextStyle(color: Color(0xFFFFFFFF)),
-                      ),
-                    )
-                  ],
+      child: role == null
+          ? Center(child: CircularProgressIndicator())
+          : ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.blue),
+                  child: Text("Connecté en tant que : ${role!.toUpperCase()}",
+                      style: TextStyle(color: Colors.white, fontSize: 16)),
                 ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.dashboard,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Tableau de bord",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(builder: (context) => tableauDeBord()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.local_hospital,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Hopitaux",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(builder: (context) => listeHopitaux()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.local_fire_department_sharp,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Departement",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(builder: (context) => departementsDispo()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.vaccines,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Medecins",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                      builder: (context) => ListeDesMedecinsPourAdmin()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.person_outline,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Secretaire",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                    builder: (context) => ListeDesSecretaire(),
+
+                // ADMIN
+                if (role == 'admin') ...[
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Tableau de bord'),
+                    onTap: () {}, // à remplir
                   ),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.group,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Patients",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                    builder: (context) => listeDesPatients(),
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Departement'),
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => departementsDispo()));
+                    }, // à remplir
                   ),
-                );
-              },
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Hoptaux'),
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => listeHopitaux()));
+                    }, // à remplir
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Medecins'),
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ListeDesMedecinsPourAdmin()));
+                    }, // à remplir
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('secretaires'),
+                    onTap: () {}, // à remplir
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Patients'),
+                    onTap: () {}, // à remplir
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Rendez-vous'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Disponibilites'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Rapports'),
+                    onTap: () {}, // à remplir
+                  ),
+                ],
+
+                // MEDECIN
+                if (role == 'medecin') ...[
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Mes rendez-vous'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Mes patients'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Disponibilites'),
+                    onTap: () {},
+                  ),
+                ],
+
+                // SECRETAIRE
+                if (role == 'secretaire') ...[
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('Liste des patients'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Rendez-vous'),
+                    onTap: () {},
+                  ),
+                ],
+
+                // PATIENT
+                if (role == 'patient') ...[
+                  ListTile(
+                    leading: Icon(Icons.calendar_today),
+                    title: Text('Mes rendez-vous'),
+                    onTap: () {
+                      Navigator.push(
+                        (context),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                HistoriqueRendezVousPourPatients()),
+                      );
+                    },
+                  ),
+                ],
+
+                Divider(),
+
+                ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('Déconnexion'),
+                  onTap: () async {
+                    await ApiMobileRv.logout();
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/login', (route) => false);
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(
-                Icons.assignment,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Rendez-vous",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          listeDesRendezVousDisponiblePourAdmin()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.calendar_today,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Calendrier / disponibilites",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(
-                      builder: (context) => listeDisponibilitesCalendrier()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.note,
-                color: Color(0xFFBBDEFB),
-              ),
-              title: Text(
-                "Rapports",
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-              onTap: () {
-                Navigator.push(
-                  (context),
-                  MaterialPageRoute(builder: (context) => rapportsAdmin()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+
+      // backgroundColor: Color(0xFF1565C0),
+      // child: Padding(
+      //   padding: EdgeInsets.all(10),
+      //   child: ListView(
+      //     children: [
+      //       DrawerHeader(
+      //         child: Container(
+      //           child: Column(
+      //             children: [
+      //               ClipOval(
+      //                 child: Image.asset(
+      //                   "assets/images/med1.jpg",
+      //                   width: 100,
+      //                   height: 100,
+      //                   fit: BoxFit.cover,
+      //                 ),
+      //               ),
+      //               Container(
+      //                 child: Text(
+      //                   "Adiministrateur",
+      //                   style: TextStyle(color: Color(0xFFFFFFFF)),
+      //                 ),
+      //               )
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.dashboard,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Tableau de bord",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(builder: (context) => tableauDeBord()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.local_hospital,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Hopitaux",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(builder: (context) => listeHopitaux()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.local_fire_department_sharp,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Departement",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(builder: (context) => departementsDispo()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.vaccines,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Medecins",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(
+      //                 builder: (context) => ListeDesMedecinsPourAdmin()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.person_outline,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Secretaire",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(
+      //               builder: (context) => ListeDesSecretaire(),
+      //             ),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.group,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Patients",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(
+      //               builder: (context) => listeDesPatients(),
+      //             ),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.assignment,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Rendez-vous",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(
+      //                 builder: (context) =>
+      //                     listeDesRendezVousDisponiblePourAdmin()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.calendar_today,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Calendrier / disponibilites",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(
+      //                 builder: (context) => listeDisponibilitesCalendrier()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         leading: Icon(
+      //           Icons.note,
+      //           color: Color(0xFFBBDEFB),
+      //         ),
+      //         title: Text(
+      //           "Rapports",
+      //           style: TextStyle(color: Color(0xFFFFFFFF)),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             (context),
+      //             MaterialPageRoute(builder: (context) => rapportsAdmin()),
+      //           );
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

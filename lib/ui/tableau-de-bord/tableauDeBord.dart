@@ -82,7 +82,7 @@ class _tableauDeBordState extends State<tableauDeBord> {
             UserInfoCard(
               nomUtilisateur: "Admin",
               role: "admin",
-              imagePath: "assets/images/medecin1.png",
+              imagePath: "assets/images/profile_admin.jpg",
             ),
             Expanded(
               child: Container(

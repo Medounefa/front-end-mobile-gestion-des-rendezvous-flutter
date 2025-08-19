@@ -25,7 +25,7 @@ class _tableauDeBoardSecretaireState extends State<tableauDeBoardSecretaire> {
           color: Color(0xFFFFFFFF), // icône burger noir
         ),
         title: Text(
-          "Tableau de \nbord medecin",
+          "Tableau de \nbord secretaire",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
           ),
@@ -86,7 +86,7 @@ class _tableauDeBoardSecretaireState extends State<tableauDeBoardSecretaire> {
             UserInfoCard(
               nomUtilisateur: "Ndeye Fall",
               role: "Secretaire",
-              imagePath: "assets/images/medecin1.png",
+              imagePath: "assets/images/profile_secretaire.jpg",
             ),
             Expanded(
               child: Container(

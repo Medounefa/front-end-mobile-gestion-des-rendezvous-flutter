@@ -87,7 +87,7 @@ class _tableauDeBoardPatientState extends State<tableauDeBoardPatient> {
             UserInfoCard(
               nomUtilisateur: "Amadou Faye",
               role: "Patient",
-              imagePath: "assets/images/medecin1.png",
+              imagePath: "assets/images/profile_patient.jpg",
             ),
             Expanded(
               child: Container(
@@ -257,13 +257,7 @@ class _tableauDeBoardPatientState extends State<tableauDeBoardPatient> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) => ListeMedecins()),
-                          );
-                        },
+                        onTap: () {},
                         child: Container(
                           alignment: Alignment.center,
                           decoration: BoxDecoration(

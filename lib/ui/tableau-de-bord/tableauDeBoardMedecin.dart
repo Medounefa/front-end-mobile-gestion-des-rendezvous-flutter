@@ -84,7 +84,7 @@ class _tableauDeBoardMedecinState extends State<tableauDeBoardMedecin> {
             UserInfoCard(
               nomUtilisateur: "Dr Medoune Fall",
               role: "Medecin",
-              imagePath: "assets/images/medecin1.png",
+              imagePath: "assets/images/profile_medecin.jpg",
             ),
             Expanded(
               child: Container(

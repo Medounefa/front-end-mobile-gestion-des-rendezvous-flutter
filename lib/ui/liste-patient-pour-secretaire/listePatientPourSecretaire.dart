@@ -208,7 +208,7 @@ class _listePatientPourSecretaireState
                                                     );
                                                   },
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -276,7 +276,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -344,7 +344,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -411,7 +411,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -479,7 +479,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -547,7 +547,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -614,7 +614,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -682,7 +682,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -750,7 +750,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -817,7 +817,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -885,7 +885,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),
@@ -953,7 +953,7 @@ class _listePatientPourSecretaireState
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "voir",
+                                                    "Details",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFFFFFFFF),

@@ -108,1123 +108,1169 @@ class _ListmedecinourpatientState extends State<ListmedecinPourPatient> {
                         margin: EdgeInsets.only(top: 20),
                         child: SizedBox(
                           height: 700,
-                          child: Expanded(
-                            child: GridView(
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 10,
-                              ),
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Medoune",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Cardiologue")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/08/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital Fann"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {
-                                                              Navigator.push(
-                                                                (context),
-                                                                MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          PriseDeRendezVous(),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Mouhamed",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Urologue")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "02/07/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital HIPYG"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Seynabou",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Pnmologue")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/10/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital Fann"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Medoune",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Dentiste")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/01/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital R.Toll"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Aissata",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Chirugienne")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/03/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital Rifusque"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Diallo",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Ophtalmo")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/07/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text("Hopital GAE"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                color: Color(
-                                                                    0xFFFFFFFF),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Mamadou",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Pediatre")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/06/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital Albert R"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFF5F5F5),
-                                      borderRadius: BorderRadius.circular(15),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black26,
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                          offset: Offset(4, 4),
-                                        ),
-                                      ]),
-                                  child: Center(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                ClipOval(
-                                                  child: Image.asset(
-                                                    "assets/images/med1.jpg",
-                                                    width: 60,
-                                                    height: 60,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Text(
-                                                    "Dr Coumba",
-                                                    style: TextStyle(
-                                                        fontFamily: "poppins",
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(1),
-                                                  child: Column(
-                                                    children: [
-                                                      Text("Specialite :"),
-                                                      Text("Renaux")
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      "Disponilite:",
-                                                      style: TextStyle(
-                                                          fontFamily: "poppins",
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
-                                                    Text(
-                                                      "10/04/25",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(Icons.place),
-                                                            Text(
-                                                                "Hopital K.Massar"),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Container(
-                                                          height: 25,
-                                                          child: ElevatedButton(
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Color(
-                                                                      0xFF4CAF50),
-                                                              shadowColor: Colors
-                                                                  .transparent,
-                                                              elevation: 0,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  side:
-                                                                      BorderSide
-                                                                          .none),
-                                                            ),
-                                                            onPressed: () {},
-                                                            child: Text(
-                                                              "Prendez un RV",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                      0xFFFFFFFF)),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          child: GridView(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisExtent: 165,
+                              crossAxisCount: 1,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
                             ),
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 0),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF5F5F5),
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ]),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  "assets/images/med1.jpg",
+                                                  width: 60,
+                                                  height: 60,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Text(
+                                                  "Dr Medoune",
+                                                  style: TextStyle(
+                                                      fontFamily: "poppins",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.all(1),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text("Specialite :"),
+                                                        Text("Cardiologue"),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Disponilite:",
+                                                style: TextStyle(
+                                                    fontFamily: "poppins",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "10/08/25",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.place),
+                                                      Text("Hopital Fann"),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4CAF50),
+                                            shadowColor: Colors.transparent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                side: BorderSide.none),
+                                          ),
+                                          onPressed: () {
+                                            // Navigator.push(
+                                            //   (context),
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) =>
+                                            //         PriseDeRendezVous(),
+                                            //   ),
+                                            // );
+                                          },
+                                          child: Text(
+                                            "Prendez un RV",
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

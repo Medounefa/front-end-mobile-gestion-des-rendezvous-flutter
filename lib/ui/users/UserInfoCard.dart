@@ -43,7 +43,8 @@ class UserInfoCard extends StatelessWidget {
                   ),
                   Text(
                     "Rôle : $role",
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    style:
+                        TextStyle(fontSize: 14, color: const Color(0xFF757575)),
                   ),
                   Text(
                     "Aujourd’hui : $formattedDate",

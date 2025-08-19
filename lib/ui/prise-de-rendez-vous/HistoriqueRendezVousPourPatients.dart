@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/PriseDErendezVous.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HistoriqueRendezVousPourPatients extends StatefulWidget {
   const HistoriqueRendezVousPourPatients({super.key});
@@ -38,6 +40,31 @@ class _HistoriqueRendezVousPourPatientsState
     'Termine',
     'En attente',
   ];
+
+  Future<void> _goToPriseDeRendezVous() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('jwt_token') ?? '';
+    final role = prefs.getString('role') ?? '';
+    print('Token récupéré: "$token"');
+    print('Role récupéré: "$role"');
+
+    if (token.isNotEmpty && role.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PriseDeRendezVous(
+            token: token,
+            userRole: role,
+          ),
+        ),
+      );
+    } else {
+      // gérer le cas où token ou rôle est manquant
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Erreur: utilisateur non authentifié")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +194,7 @@ class _HistoriqueRendezVousPourPatientsState
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xFF4CAF50),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: _goToPriseDeRendezVous,
                                   icon: Icon(
                                     Icons.add,
                                     color: Color(0xFFFFFFFF),

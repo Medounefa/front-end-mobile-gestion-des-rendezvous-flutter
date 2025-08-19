@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
 import 'package:gestiondesrendezvoushopitals/ui/list-Medecin-Pour-Patient/listMedecinPourPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/listeDesRendezVousPourMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-patient-pour-secretaire/listePatientPourSecretaire.dart';
@@ -7,6 +8,8 @@ import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardMe
 import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBoardSecretaire.dart';
 import 'package:gestiondesrendezvoushopitals/ui/tableau-de-bord/tableauDeBord.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,42 +19,95 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController _nomController = TextEditingController();
-  final TextEditingController _mdpController = TextEditingController();
+  // final TextEditingController _nomController = TextEditingController();
+  // final TextEditingController _mdpController = TextEditingController();
 
-  void _seConnect() {
-    String nom = _nomController.text.trim().toLowerCase();
-    String mdp = _mdpController.text;
+  final emailController = TextEditingController();
+  final mdpController = TextEditingController();
 
-    if (mdp == "1234") {
-      switch (nom) {
-        case 'patient':
-          Navigator.push((context),
-              MaterialPageRoute(builder: (context) => tableauDeBoardPatient()));
-          break;
-        case 'medecin':
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => tableauDeBoardMedecin()));
-          break;
-        case 'secretaire':
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => tableauDeBoardSecretaire(),
-            ),
-          );
-          break;
-        case 'admin':
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => tableauDeBord(),
-            ),
-          );
-          break;
+  Future<void> _seConnecter() async {
+    try {
+      final result =
+          await ApiMobileRv.login(emailController.text, mdpController.text);
+      print("Données reçues après login : $result");
+
+      if (result != null && result.containsKey('access')) {
+        // final role = result['role'];
+
+        final role = (result['role'] ?? '').toString().trim().toLowerCase();
+
+        //add
+        final prefs = await SharedPreferences.getInstance();
+
+        //add
+        await prefs.setString('jwt_token', result['access']);
+        await prefs.setString('role', role);
+        // final role = result['role'] ?? 'patient'; // à adapter si nécessaire
+        switch (role) {
+          case 'admin':
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => tableauDeBord()));
+            break;
+          case 'secretaire':
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => tableauDeBoardSecretaire()));
+            break;
+          case 'medecin':
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => tableauDeBoardMedecin()));
+            break;
+          case 'patient':
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => tableauDeBoardPatient()));
+            break;
+        }
+        // ... redirection selon le rôle
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Échec de connexion")),
+        );
       }
+    } catch (e) {
+      print("Erreur pendant la connexion: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Une erreur est survenue")),
+      );
     }
   }
+
+  // void _seConnect() {
+  //   String nom = _nomController.text.trim().toLowerCase();
+  //   String mdp = _mdpController.text;
+
+  //   if (mdp == "1234") {
+  //     switch (nom) {
+  //       case 'patient':
+  //         Navigator.push((context),
+  //             MaterialPageRoute(builder: (context) => tableauDeBoardPatient()));
+  //         break;
+  //       case 'medecin':
+  //         Navigator.push(context,
+  //             MaterialPageRoute(builder: (context) => tableauDeBoardMedecin()));
+  //         break;
+  //       case 'secretaire':
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => tableauDeBoardSecretaire(),
+  //           ),
+  //         );
+  //         break;
+  //       case 'admin':
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => tableauDeBord(),
+  //           ),
+  //         );
+  //         break;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +159,7 @@ class _LoginState extends State<Login> {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: TextField(
-                          controller: _nomController,
+                          controller: emailController,
                           decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Entrez votre email",
@@ -116,7 +172,7 @@ class _LoginState extends State<Login> {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: TextField(
-                          controller: _mdpController,
+                          controller: mdpController,
                           decoration: InputDecoration(
                             labelText: "Mot de passe",
                             hintText: "Entrez votre mot de passe",
@@ -146,7 +202,7 @@ class _LoginState extends State<Login> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
-                            onPressed: _seConnect),
+                            onPressed: _seConnecter),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 65),

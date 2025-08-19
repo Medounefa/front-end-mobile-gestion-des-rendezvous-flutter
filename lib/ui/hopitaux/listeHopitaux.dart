@@ -146,7 +146,7 @@ class _listeHopitauxState extends State<listeHopitaux> {
               onPressed: () {
                 Navigator.push(
                   (context),
-                  MaterialPageRoute(builder: (context) => ajoutHopital()),
+                  MaterialPageRoute(builder: (context) => Ajoutehopitaux()),
                 );
               },
               icon: Icon(

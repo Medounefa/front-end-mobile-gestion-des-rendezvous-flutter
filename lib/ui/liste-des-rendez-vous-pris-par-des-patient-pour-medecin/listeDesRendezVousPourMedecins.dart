@@ -686,6 +686,7 @@ import 'package:gestiondesrendezvoushopitals/ui/Ajout-rendez-vous-pour-patient-p
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/detailsDuRendezVousDuPatientPourMedecin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/PriseDeRendezVous.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/detailsRendezVous.dart';
 
@@ -1451,8 +1452,8 @@ class _listeDesRendezVousPourMedecinsState
                             Navigator.push(
                               (context),
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      AjouterRendezVousPourPatient()),
+                                  builder: (context) => PriseDeRendezVous(
+                                      token: '', userRole: '')),
                             );
                           },
                           child: Text(

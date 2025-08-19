@@ -1,33 +1,57 @@
+//
+
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/hopitaux/listeHopitaux.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
-// import 'package:file_picker/file_picker.dart';
 
-class ajoutHopital extends StatefulWidget {
-  const ajoutHopital({super.key});
-
+class Ajoutehopitaux extends StatefulWidget {
   @override
-  State<ajoutHopital> createState() => _ajoutHopitalState();
+  _AjoutehopitauxState createState() => _AjoutehopitauxState();
 }
 
-class _ajoutHopitalState extends State<ajoutHopital> {
-  // String? fileName;
+class _AjoutehopitauxState extends State<Ajoutehopitaux> {
+  final TextEditingController _nomController = TextEditingController();
+  final TextEditingController _adresseController = TextEditingController();
 
-  // void pickFile() async {
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles();
+  List<dynamic> _departements = [];
+  int? _selectedDepartementId;
 
-  //   if (result != null) {
-  //     PlatformFile file = result.files.first;
+  @override
+  void initState() {
+    super.initState();
+    _loadDepartements();
+  }
 
-  //     setState(() {
-  //       fileName = file.name;
-  //     });
+  void _loadDepartements() async {
+    final data = await ApiMobileRv.getDepartements();
+    setState(() {
+      _departements = data;
+    });
+  }
 
-  //     // Optionnel : afficher le chemin complet ou envoyer le fichier
-  //     print("Chemin du fichier : ${file.path}");
-  //   }
-  // }
+  void _saveHopital() async {
+    if (_selectedDepartementId == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Choisir un département")));
+      return;
+    }
+    bool success = await ApiMobileRv.createHopital(
+      _nomController.text,
+      _adresseController.text,
+      _selectedDepartementId!,
+    );
+    if (success) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Hôpital ajouté")));
+      _nomController.clear();
+      _adresseController.clear();
+      Navigator.pop(context);
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Erreur")));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +63,10 @@ class _ajoutHopitalState extends State<ajoutHopital> {
         ),
         backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
-        title: Text("Ajouter un \nhopital",
-            style: TextStyle(color: Color(0xFFFFFFFF))),
+        title: Text(
+          "liste des hopitaux \ndisponibles",
+          style: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
         actions: [
           Row(
             children: [
@@ -80,142 +106,64 @@ class _ajoutHopitalState extends State<ajoutHopital> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Container(
-                width: 350,
-                padding: EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset: Offset(2, 2))
-                  ],
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Nom : ",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                              hintText: "nom",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Adresse : ",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                              hintText: "Adresse",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Logo : ",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                              hintText: "Logo",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 18,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF4CAF50),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              (context),
-                              MaterialPageRoute(
-                                  builder: (context) => listeHopitaux()),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.add,
-                            color: Color(0xFFFFFFFF),
-                          ),
-                          label: Text(
-                            "Ajouter ",
-                            style: TextStyle(color: Color(0xFFFFFFFF)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    // Column(
-                    //   children: [
-                    //     Text(
-                    //       "Logo : ",
-                    //       style: TextStyle(
-                    //           fontSize: 17, fontWeight: FontWeight.bold),
-                    //     ),
-                    //     GestureDetector(
-                    //       onTap: pickFile,
-                    //       child: AbsorbPointer(
-                    //         child: TextFormField(
-                    //           readOnly: true,
-                    //           controller: TextEditingController(text: fileName),
-                    //           decoration: InputDecoration(
-                    //             hintText: "nom",
-                    //             border: OutlineInputBorder(
-                    //               borderRadius: BorderRadius.circular(10),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _nomController,
+              decoration: InputDecoration(
+                hintText: "Nom de l'hôpital",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 10),
+            TextField(
+              controller: _adresseController,
+              decoration: InputDecoration(
+                hintText: "Adresse",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+            SizedBox(height: 10),
+            DropdownButtonFormField<int>(
+              decoration: InputDecoration(
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              hint: Text("Sélectionner un département"),
+              value: _selectedDepartementId,
+              onChanged: (val) {
+                setState(() {
+                  _selectedDepartementId = val;
+                });
+              },
+              items: _departements.map<DropdownMenuItem<int>>((dep) {
+                return DropdownMenuItem<int>(
+                  value: dep['id'],
+                  child: Text(dep['nom']),
+                );
+              }).toList(),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF4CAF50),
+              ),
+              onPressed: _saveHopital,
+              icon: Icon(
+                Icons.add,
+                color: Color(0xFFFFFFFF),
+              ),
+              label: Text(
+                "Ajouter ",
+                style: TextStyle(color: Color(0xFFFFFFFF)),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
