@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiMobileRv {
-  static const String baseUrl = 'http://192.168.1.3:8000';
+  static const String baseUrl = 'http://192.168.1.10:8000';
 
   static String? _token;
 
@@ -153,6 +153,119 @@ class ApiMobileRv {
     );
   }
 
+  // Récupérer tous les utilisateurs
+  static Future<List<dynamic>> getUsers() async {
+    final token = await _getToken();
+    if (token == null) return [];
+
+    final url = Uri.parse('$baseUrl/users/');
+    final response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      print("Erreur getUsers: ${response.statusCode}");
+      return [];
+    }
+  }
+
+  // Récupérer tous les médecins
+  static Future<List<Map<String, dynamic>>> getMedecins(String token) async {
+    final url = Uri.parse('$baseUrl/medecins/');
+
+    final response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token', // 🔑 Vérifie bien ce header
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return List<Map<String, dynamic>>.from(json.decode(response.body));
+    } else {
+      throw Exception("Erreur chargement médecins: ${response.body}");
+    }
+  }
+
+  // Récupérer tous les patients (pour secrétaire)
+  static Future<List<dynamic>> getPatients(String token) async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/patients/'),
+      headers: await _headers(),
+    );
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      print("Erreur getPatients: ${response.body}");
+      return [];
+    }
+  }
+
+  //supprimer et modifier
+  static Future<bool> deleteUser(int userId) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    final url = Uri.parse('$baseUrl/users/$userId/');
+    final response = await http.delete(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    return response.statusCode == 204; // 204 = suppression réussie
+  }
+
+  // 📌 Mettre à jour un utilisateur
+  static Future<bool> updateUser({
+    required int id,
+    required String username,
+    required String prenom,
+    required String nom,
+    required String email,
+    required String password,
+    required String adresse,
+    required String numero,
+    required String specialite,
+    required String role,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    final url = Uri.parse('$baseUrl/users/$id/');
+    final body = jsonEncode({
+      'username': username,
+      'prenom': prenom,
+      'nom': nom,
+      'email': email,
+      'password': password,
+      'adresse': adresse,
+      'numero': numero,
+      'specialite': specialite,
+      'role': role,
+    });
+
+    final response = await http.put(
+      url,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: body,
+    );
+
+    return response.statusCode == 200; // 200 = modification réussie
+  }
+
   //departement et hopitaux
   static Future<bool> ajouterDepartement(String nom) async {
     final url = Uri.parse('$baseUrl/departements/');
@@ -218,6 +331,7 @@ class ApiMobileRv {
 
   static Future<List<dynamic>> getDepartements() async {
     final token = await _getToken();
+    if (token == null) throw Exception("Token non trouvé");
     final response = await http.get(
       Uri.parse("$baseUrl/departements/"),
       headers: {
@@ -233,6 +347,52 @@ class ApiMobileRv {
       return [];
     }
   }
+
+  static Future<bool> modifierDepartement(int id, String nom) async {
+    final token = await _getToken();
+    final response = await http.put(
+      Uri.parse("$baseUrl/departements/$id/"),
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+      body: jsonEncode({"nom": nom}),
+    );
+
+    return response.statusCode == 200; // 200 OK
+  }
+
+  // 👉 Supprimer un département
+  static Future<bool> supprimerDepartement(int id) async {
+    final token = await _getToken();
+    final response = await http.delete(
+      Uri.parse("$baseUrl/departements/$id/"),
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+    );
+
+    return response.statusCode == 204; // 204 No Content
+  }
+
+  // static Future<List<dynamic>> getDepartements(String token) async {
+  //   final token = await _getToken();
+  //   final response = await http.get(
+  //     Uri.parse("$baseUrl/departements/"),
+  //     headers: {
+  //       "Authorization": "Bearer $token",
+  //       "Content-Type": "application/json",
+  //     },
+  //   );
+
+  //   if (response.statusCode == 200) {
+  //     return jsonDecode(response.body);
+  //   } else {
+  //     print("Erreur getDepartements: ${response.statusCode}");
+  //     return [];
+  //   }
+  // }
 
   static Future<bool> createHopital(
       String nom, String adresse, int departementId) async {
@@ -255,15 +415,57 @@ class ApiMobileRv {
 
   // 📌 Récupérer la liste des hôpitaux
   static Future<List<dynamic>> getHopitaux() async {
-    final response =
-        await http.get(Uri.parse("$baseUrl/hopitaux/"), headers: _headers());
+    final token = await _getToken(); // récupère le token stocké
+    if (token == null) throw Exception("Token non trouvé");
+
+    final response = await http.get(
+      Uri.parse("$baseUrl/hopitaux/"),
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+    );
+
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
+    } else {
+      print("Erreur récupération hôpitaux: ${response.statusCode}");
+      return [];
     }
-    return [];
   }
 
-  Future<bool> priseDeRendezVous(
+  static Future<bool> updateHopital(
+      int id, String nom, String adresse, int departementId) async {
+    final token = await _getToken();
+    final response = await http.put(
+      Uri.parse("$baseUrl/hopitaux/$id/"),
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+      body: jsonEncode({
+        "nom": nom,
+        "adresse": adresse,
+        "departement": departementId,
+      }),
+    );
+    return response.statusCode == 200;
+  }
+
+  // Supprimer un hôpital
+  static Future<bool> deleteHopital(int id) async {
+    final token = await _getToken();
+    final response = await http.delete(
+      Uri.parse("$baseUrl/hopitaux/$id/"),
+      headers: {
+        "Authorization": "Bearer $token",
+        "Content-Type": "application/json",
+      },
+    );
+    return response.statusCode == 204;
+  }
+
+  static Future<bool> priseDeRendezVous(
       String token, Map<String, dynamic> appointmentData) async {
     final url = Uri.parse('$baseUrl/rendezvous/create/');
 
@@ -286,6 +488,82 @@ class ApiMobileRv {
           "Erreur création rendez-vous: ${response.statusCode} - ${response.body}");
       return false;
     }
+  }
+
+  static Future<List<dynamic>> getRendezVous(String token, String role) async {
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('user_id'); // récupère l'ID de l'utilisateur
+
+    if (userId == null) {
+      print("Erreur : user_id non trouvé dans SharedPreferences");
+      return [];
+    }
+
+    final response = await http.get(
+      Uri.parse('$baseUrl/rendezvous/'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      List allRdv = jsonDecode(response.body);
+
+      // Filtrage selon le rôle
+      if (role == 'patient') {
+        allRdv = allRdv.where((r) => r['patient_id'] == userId).toList();
+      } else if (role == 'medecin') {
+        allRdv = allRdv.where((r) => r['medecin_id'] == userId).toList();
+      } // Secrétaire et Admin voient tout
+
+      return allRdv;
+    } else {
+      print("Erreur API rendez-vous : ${response.statusCode}");
+      return [];
+    }
+  }
+
+  /// Annuler un rendez-vous
+  static Future<bool> annulerRendezVous(String token, int rdvId) async {
+    final response = await http.patch(
+      Uri.parse('$baseUrl/rendezvous/$rdvId/'),
+      headers: await _headers(),
+      body: jsonEncode({'statut': 'annulé'}),
+    );
+
+    return response.statusCode == 200;
+  }
+
+  /// Supprimer un rendez-vous
+  static Future<bool> supprimerRendezVous(String token, int rdvId) async {
+    final response = await http.delete(
+      Uri.parse('$baseUrl/rendezvous/$rdvId/'),
+      headers: await _headers(),
+    );
+    return response.statusCode == 204;
+  }
+
+  /// Modifier un rendez-vous
+  static Future<bool> modifierRendezVous(String token, int rdvId, String date,
+      String heure, String description) async {
+    final response = await http.patch(
+      Uri.parse('$baseUrl/rendezvous/$rdvId/'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token', // <-- très important
+      }, // <- token ici
+      body: jsonEncode({
+        'date': date,
+        'heure': heure,
+        'description': description,
+      }),
+    );
+
+    print("Modifier RDV status: ${response.statusCode}");
+    print("Modifier RDV body: ${response.body}");
+
+    return response.statusCode == 200;
   }
 
   Future<List<Map<String, dynamic>>?> fetchUsersByRole(
@@ -425,10 +703,10 @@ class ApiMobileRv {
     return await create('hopitaux', data);
   }
 
-  static Future<http.Response> ajouterDisponibilite(
-      Map<String, dynamic> data) async {
-    return await create('disponibilites', data);
-  }
+  // static Future<http.Response> ajouterDisponibilite(
+  //     Map<String, dynamic> data) async {
+  //   return await create('disponibilites', data);
+  // }
 
   static Future<http.Response> envoyerNotification(
       Map<String, dynamic> data) async {
@@ -437,5 +715,107 @@ class ApiMobileRv {
 
   static Future<http.Response> ajouterRole(Map<String, dynamic> data) async {
     return await create('roles', data); // si tu as un endpoint pour ça
+  }
+
+  static Future<bool> ajouterRapport(
+    String s, {
+    required String token,
+    required String typeRapport,
+    required String dateDebut,
+    required String dateFin,
+    required String description,
+    required int creePar,
+    int? departementId,
+    int? hopitalId,
+  }) async {
+    final url = Uri.parse("$baseUrl/rapports-admin/");
+
+    Map<String, dynamic> data = {
+      "type_rapport": typeRapport,
+      "date_debut": dateDebut,
+      "date_fin": dateFin,
+      "description": description,
+      "cree_par": creePar,
+    };
+
+    if (departementId != null) {
+      data["departement"] = departementId;
+    }
+    if (hopitalId != null) {
+      data["hopital"] = hopitalId;
+    }
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        },
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 201) {
+        // Création réussie
+        return true;
+      } else {
+        print("Erreur API ajouterRapport: ${response.statusCode}");
+        print("Response body: ${response.body}");
+        return false;
+      }
+    } catch (e) {
+      print("Exception API ajouterRapport: $e");
+      return false;
+    }
+  }
+
+//   static Future<void> ajouterDisponibilite(
+//       String token, String jour, String heureDebut, String heureFin) async {
+//     final url = Uri.parse('$baseUrl/disponibilites/');
+//     final response = await http.post(
+//       url,
+//       headers: {
+//         'Authorization': 'Bearer $token',
+//         'Content-Type': 'application/json',
+//       },
+//       body: jsonEncode({
+//         "jour": jour,
+//         "heure_debut": heureDebut,
+//         "heure_fin": heureFin,
+//       }),
+//     );
+
+//     if (response.statusCode != 201) {
+//       throw Exception('Erreur ajout disponibilité: ${response.body}');
+//     }
+//   }
+// }
+
+  Future<dynamic> addDisponibilite({
+    required String token,
+    required String date,
+    required String heureDebut,
+    required String heureFin,
+  }) async {
+    final url = Uri.parse('$baseUrl/disponibilites/');
+
+    final response = await http.post(
+      url,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $token",
+      },
+      body: jsonEncode({
+        "date": date,
+        "heure_debut": heureDebut,
+        "heure_fin": heureFin,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      return jsonDecode(response.body); // ✅ on retourne la réponse
+    } else {
+      throw Exception("Erreur ${response.statusCode}: ${response.body}");
+    }
   }
 }

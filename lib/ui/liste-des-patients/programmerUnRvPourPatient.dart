@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/medecins-dispo-rv/ListeMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/creneaux-disponibles/CreneauxDisponibles.dart';
-import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/MesRendezVousPage.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:intl/intl.dart';
 
@@ -49,8 +49,7 @@ class _ProgrammerunRvPourPatientState extends State<ProgrammerunRvPourPatient> {
                     Navigator.push(
                         (context),
                         MaterialPageRoute(
-                            builder: (context) =>
-                                HistoriqueRendezVousPourPatients()));
+                            builder: (context) => MesRendezVousPage()));
                   },
                   child: Text("x"),
                 ),

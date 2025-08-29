@@ -5,7 +5,7 @@ import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
 class detailsMedecinPourAdmin extends StatefulWidget {
-  const detailsMedecinPourAdmin({super.key, required Medecins medecin});
+  const detailsMedecinPourAdmin({super.key, required medecin});
 
   @override
   State<detailsMedecinPourAdmin> createState() =>

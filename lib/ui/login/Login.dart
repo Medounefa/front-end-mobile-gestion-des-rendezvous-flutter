@@ -30,6 +30,7 @@ class _LoginState extends State<Login> {
       final result =
           await ApiMobileRv.login(emailController.text, mdpController.text);
       print("Données reçues après login : $result");
+      print(result);
 
       if (result != null && result.containsKey('access')) {
         // final role = result['role'];
@@ -38,10 +39,23 @@ class _LoginState extends State<Login> {
 
         //add
         final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('username', result['username']);
 
         //add
+
         await prefs.setString('jwt_token', result['access']);
         await prefs.setString('role', role);
+
+        await prefs.setString('username', result['username'] ?? '');
+        ;
+        if (result['user_id'] != null) {
+          await prefs.setInt('user_id', result['user_id']);
+        } else {
+          print("Erreur : user_id est null dans la réponse du backend");
+        }
+
+        // await prefs.setInt('user_id', result['id']);
+
         // final role = result['role'] ?? 'patient'; // à adapter si nécessaire
         switch (role) {
           case 'admin':

@@ -684,7 +684,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/ui/Ajout-rendez-vous-pour-patient-par-le-secretaire/ajouterRendezVousPourPatient.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-des-patient-pour-medecin/detailsDuRendezVousDuPatientPourMedecin.dart';
-import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsRendezVousPage.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/PriseDeRendezVous.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
@@ -1449,12 +1449,12 @@ class _listeDesRendezVousPourMedecinsState
                             ),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              (context),
-                              MaterialPageRoute(
-                                  builder: (context) => PriseDeRendezVous(
-                                      token: '', userRole: '')),
-                            );
+                            // Navigator.push(
+                            //   (context),
+                            //   MaterialPageRoute(
+                            //       builder: (context) => PriseDeRendezVous(
+                            //           token: '', userRole: '')),
+                            // );
                           },
                           child: Text(
                             "Ajouter",

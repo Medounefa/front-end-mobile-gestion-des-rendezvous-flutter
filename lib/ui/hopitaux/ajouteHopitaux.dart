@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Ajoutehopitaux extends StatefulWidget {
   @override
@@ -24,6 +25,8 @@ class _AjoutehopitauxState extends State<Ajoutehopitaux> {
   }
 
   void _loadDepartements() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString("jwt_token") ?? "";
     final data = await ApiMobileRv.getDepartements();
     setState(() {
       _departements = data;
@@ -64,7 +67,7 @@ class _AjoutehopitauxState extends State<Ajoutehopitaux> {
         backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "liste des hopitaux \ndisponibles",
+          "Ajouter un \nhopital",
           style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         actions: [

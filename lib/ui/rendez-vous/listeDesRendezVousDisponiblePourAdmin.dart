@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsHistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/DetailsRendezVousPage.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/detailsRendezVous.dart';

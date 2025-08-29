@@ -1,206 +1,140 @@
+//
+
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/AjouterUnMedecin.dart';
-import 'package:gestiondesrendezvoushopitals/ui/liste-des-secretaire/AjouterUnSecretaire.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
+import 'package:gestiondesrendezvoushopitals/ui/users/CreateUser.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
-import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 
-class Secretaires {
-  final String profile;
-  final String nom;
-  final String medecin;
-  Secretaires(
-      {required this.profile, required this.nom, required this.medecin});
-}
-
-class ListeDesSecretaire extends StatefulWidget {
-  const ListeDesSecretaire({super.key});
+class ListeSecretaires extends StatefulWidget {
+  const ListeSecretaires({super.key});
 
   @override
-  State<ListeDesSecretaire> createState() => _ListeDesSecretaireState();
+  State<ListeSecretaires> createState() => _ListeSecretairesState();
 }
 
-class _ListeDesSecretaireState extends State<ListeDesSecretaire> {
-  final List<Secretaires> secretaires = [
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Mankeur wade",
-        medecin: "Dr Medoune Fall"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Amina Sene",
-        medecin: "Dr Amadou Faye"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Karime",
-        medecin: "Dr Malcik Faye"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Mamadou Faye",
-        medecin: "Dr Marie Elene Mballo"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Mimi Toure",
-        medecin: "Dr Fatouma Sall Traore"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Coumba Faye",
-        medecin: "Dr Soukeye Ndiaye"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Seynaba Mbaye",
-        medecin: "Dr Amadou Pouye"),
-    Secretaires(
-        profile: "assets/images/med1.jpg",
-        nom: "Mankeur wade",
-        medecin: "Dr Medoune Fall"),
-  ];
+class _ListeSecretairesState extends State<ListeSecretaires> {
+  List<dynamic> allUsers = [];
+  List<dynamic> secretaires = [];
+  bool loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsers();
+  }
+
+  Future<void> _loadUsers() async {
+    setState(() => loading = true);
+    final users = await ApiMobileRv.getUsers();
+    setState(() {
+      allUsers = users;
+      secretaires = allUsers.where((u) => u['role'] == 'secretaire').toList();
+      loading = false;
+    });
+  }
+
+  Future<void> _deleteSecretaire(int id) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Confirmer la suppression"),
+        content: Text("Voulez-vous vraiment supprimer cette secrétaire ?"),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text("Annuler")),
+          TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text("Supprimer")),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      final success = await ApiMobileRv.deleteUser(id);
+      if (success) _loadUsers();
+    }
+  }
+
+  void _editSecretaire(Map<String, dynamic> secretaire) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => Createuser(userToEdit: secretaire),
+      ),
+    );
+
+    if (result == true) _loadUsers();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Color(0xFFFFFFFF), // icône burger noir
-        ),
         backgroundColor: Color(0xFF007BFF),
-        toolbarHeight: 100,
         title: Text(
-          "listes des \nsecretaires",
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          "Liste des secrétaires",
+          style: TextStyle(color: Colors.white),
         ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                child: Stack(
-                  children: [
-                    Icon(
-                      Icons.notifications,
-                      size: 40,
-                      color: Color(0xFF2196F3),
-                    ),
-                    Positioned(
-                      top: 2,
-                      right: 0,
-                      child: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFB74D),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.2),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                  right: 10,
-                ),
-                child: ClipOval(
-                  child: UserMenu(),
-                ),
-              ),
-            ],
-          )
-        ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
+      body: loading
+          ? Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
                 children: [
                   Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Recherche un scertaire par ...",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                    child: ListView.builder(
+                      itemCount: secretaires.length,
+                      itemBuilder: (context, index) {
+                        final secretaire = secretaires[index];
+                        return ListTile(
+                          title: Text(
+                              "${secretaire['prenom']} ${secretaire['nom']}"),
+                          subtitle: Text(secretaire['email']),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.edit, color: Colors.orange),
+                                onPressed: () => _editSecretaire(secretaire),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.delete, color: Colors.red),
+                                onPressed: () =>
+                                    _deleteSecretaire(secretaire['id']),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      Icons.search,
-                      color: Color(0xFFFFFFFF),
-                    ),
+                  SizedBox(height: 16),
+                  ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      maximumSize: Size(150, 50),
                       backgroundColor: Color(0xFF4CAF50),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+                      minimumSize: Size(double.infinity, 50),
                     ),
-                  )
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const Createuser(
+                                  userToEdit: {},
+                                )),
+                      ).then((_) => _loadUsers());
+                    },
+                    icon: Icon(Icons.add, color: Colors.white),
+                    label: Text(
+                      "Ajouter une secrétaire",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 14,
-              ),
-              Container(
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: secretaires.length,
-                    itemBuilder: (context, index) {
-                      final secretaire = secretaires[index];
-                      return Container(
-                        child: ListTile(
-                          leading: ClipOval(
-                            child: Image.asset(
-                              secretaire.profile,
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          title: Text(secretaire.nom),
-                          subtitle: Text(secretaire.medecin),
-                          onTap: () {
-                            // Action à la sélection
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4CAF50),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      (context),
-                      MaterialPageRoute(
-                          builder: (context) => AjouterUnSecretaire()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.add,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                  label: Text(
-                    "Ajouter un secretaire",
-                    style: TextStyle(color: Color(0xFFFFFFFF)),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }

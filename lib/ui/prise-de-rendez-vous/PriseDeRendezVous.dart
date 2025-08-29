@@ -351,20 +351,15 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
-import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
+import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 
 class PriseDeRendezVous extends StatefulWidget {
-  final String token;
   final String userRole; // "patient" ou "secretaire"
 
-  const PriseDeRendezVous({
-    required this.token,
-    required this.userRole,
-    Key? key,
-  }) : super(key: key);
+  const PriseDeRendezVous({required this.userRole, Key? key}) : super(key: key);
 
   @override
   _PriseDeRendezVousState createState() => _PriseDeRendezVousState();
@@ -375,37 +370,96 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;
   final _descriptionController = TextEditingController();
-  final _medecinController = TextEditingController();
-  final _patientController = TextEditingController();
-  final _hopitalController =
-      TextEditingController(); // seulement pour secrétaire
+  final _hopitalController = TextEditingController();
 
   bool _isLoading = false;
+  String? _selectedMedecin;
+  String? _selectedPatient;
+
+  List<Map<String, dynamic>> medecins = [];
+  List<Map<String, dynamic>> patients = [];
+  String token = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+    _chargerMedecins();
+  }
+
+  Future<String?> _getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token');
+  }
+
+  Future<void> _chargerMedecins() async {
+    final token = await _getToken();
+    print("👉 Token envoyé: $token");
+    if (token != null) {
+      try {
+        final data = await ApiMobileRv.getMedecins(token);
+        setState(() {
+          medecins = data;
+        });
+      } catch (e) {
+        print("Erreur chargement médecins: $e");
+      }
+    } else {
+      print("⚠️ Aucun token trouvé !");
+    }
+  }
+
+  Future<void> _loadData() async {
+    // Charger les patients
+    List<dynamic> rawPatients = await ApiMobileRv.getPatients(token);
+    List<dynamic> rawMedecins = await ApiMobileRv.getMedecins(token);
+
+    setState(() {
+      patients = rawPatients.map((e) => e as Map<String, dynamic>).toList();
+      medecins = rawMedecins.map((e) => e as Map<String, dynamic>).toList();
+    });
+  }
+
+//   Future<void> _loadData() async {
+//     final prefs = await SharedPreferences.getInstance();
+//     token = prefs.getString('jwt_token') ?? '';
+
+//     // Récupérer les médecins
+//     List<dynamic> responseData = await ApiMobileRv.getMedecins(token);
+
+// // Convertir en List<Map<String, dynamic>>
+//     List<Map<String, dynamic>> medecins =
+//         responseData.map((e) => e as Map<String, dynamic>).toList();
+
+//     // Récupérer les patients uniquement si secrétaire
+//     if (widget.userRole == 'secretaire') {
+//       List<dynamic> rawMedecins = await ApiMobileRv.getMedecins(token);
+
+//       List<Map<String, dynamic>> medecins =
+//           rawMedecins.map((e) => e as Map<String, dynamic>).toList();
+//     }
+//     setState(() {
+//       patients = rawPatients.map((e) => e as Map<String, dynamic>).toList();
+//       medecins = rawMedecins.map((e) => e as Map<String, dynamic>).toList();
+//     });
+//   }
 
   Future<void> _pickDate() async {
-    final DateTime? picked = await showDatePicker(
+    final picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now().add(Duration(days: 1)),
       firstDate: DateTime.now(),
       lastDate: DateTime(2100),
     );
-    if (picked != null) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
+    if (picked != null) setState(() => _selectedDate = picked);
   }
 
   Future<void> _pickTime() async {
-    final TimeOfDay? picked = await showTimePicker(
+    final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: 9, minute: 0),
     );
-    if (picked != null) {
-      setState(() {
-        _selectedTime = picked;
-      });
-    }
+    if (picked != null) setState(() => _selectedTime = picked);
   }
 
   Future<void> _submitForm() async {
@@ -413,44 +467,39 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
 
     if (_selectedDate == null || _selectedTime == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Veuillez choisir la date et l'heure")),
-      );
+          SnackBar(content: Text("Veuillez choisir la date et l'heure")));
       return;
     }
 
     final dateFormatted = DateFormat('yyyy-MM-dd').format(_selectedDate!);
     final heureFormatted = _selectedTime!.format(context);
 
-    final Map<String, dynamic> appointmentData = {
+    // ID patient : soit sélectionné par secrétaire, soit patient connecté
+    final prefs = await SharedPreferences.getInstance();
+    final patientId = widget.userRole == 'secretaire'
+        ? int.parse(_selectedPatient!)
+        : prefs.getInt('user_id');
+
+    final appointmentData = {
       "date": dateFormatted,
       "heure": heureFormatted,
-      "medecin": int.parse(_medecinController.text),
+      "medecin": int.parse(_selectedMedecin!),
+      "patient": patientId,
+      "hopital": int.parse(_hopitalController.text),
       "description": _descriptionController.text,
-      "hopital": _hopitalController.text,
-      "patient": _patientController.text,
     };
 
-    // Si secrétaire → on ajoute patient
-    if (widget.userRole == "secretaire") {
-      appointmentData["patient"] = int.parse(_patientController.text);
-    }
-
     setState(() => _isLoading = true);
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('jwt_token') ?? '';
-    final success =
-        await ApiMobileRv().priseDeRendezVous(token, appointmentData);
+    final success = await ApiMobileRv.priseDeRendezVous(token, appointmentData);
     setState(() => _isLoading = false);
 
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Rendez-vous créé avec succès ✅")),
-      );
+          SnackBar(content: Text("Rendez-vous créé avec succès ✅")));
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Erreur lors de la création du rendez-vous ❌")),
-      );
+          SnackBar(content: Text("Erreur lors de la création ❌")));
     }
   }
 
@@ -459,55 +508,12 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Color(0xFFFFFFFF), // icône burger noir
-        ),
         backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "Creer un \nrendez-vous",
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          "Créer un rendez-vous",
+          style: TextStyle(color: Colors.white),
         ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                child: Stack(
-                  children: [
-                    Icon(
-                      Icons.notifications,
-                      size: 40,
-                      color: Color(0xFF2196F3),
-                    ),
-                    Positioned(
-                      top: 2,
-                      right: 0,
-                      child: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFB74D),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.2),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 10),
-                child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/logo.jpg",
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -515,117 +521,111 @@ class _PriseDeRendezVousState extends State<PriseDeRendezVous> {
           key: _formKey,
           child: ListView(
             children: [
-              // Date picker
+              // Date
               TextFormField(
                 readOnly: true,
                 decoration: InputDecoration(
                   labelText: "Date",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  border: OutlineInputBorder(),
                   suffixIcon: Icon(Icons.calendar_today),
                 ),
                 onTap: _pickDate,
                 validator: (_) =>
                     _selectedDate == null ? "Choisissez une date" : null,
                 controller: TextEditingController(
-                  text: _selectedDate != null
-                      ? DateFormat('yyyy-MM-dd').format(_selectedDate!)
-                      : '',
-                ),
+                    text: _selectedDate != null
+                        ? DateFormat('yyyy-MM-dd').format(_selectedDate!)
+                        : ''),
               ),
-
               SizedBox(height: 16),
 
-              // Time picker
+              // Heure
               TextFormField(
                 readOnly: true,
                 decoration: InputDecoration(
                   labelText: "Heure",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  border: OutlineInputBorder(),
                   suffixIcon: Icon(Icons.access_time),
                 ),
                 onTap: _pickTime,
                 validator: (_) =>
                     _selectedTime == null ? "Choisissez une heure" : null,
                 controller: TextEditingController(
-                  text: _selectedTime != null
-                      ? _selectedTime!.format(context)
-                      : '',
-                ),
+                    text: _selectedTime != null
+                        ? _selectedTime!.format(context)
+                        : ''),
               ),
-
               SizedBox(height: 16),
 
-              // Médecin ID
-              TextFormField(
-                controller: _medecinController,
+              // Médecin Dropdown
+              DropdownButtonFormField<String>(
                 decoration: InputDecoration(
-                  labelText: "ID Médecin",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  labelText: "Médecin",
+                  border: OutlineInputBorder(),
                 ),
-                keyboardType: TextInputType.number,
-                validator: (value) =>
-                    value!.isEmpty ? "Entrez l'ID du médecin" : null,
+                value: _selectedMedecin,
+                items: medecins
+                    .map((m) => DropdownMenuItem(
+                        value: m['id'].toString(),
+                        child: Text("${m['nom']} ${m['prenom']}")))
+                    .toList(),
+                onChanged: (val) => setState(() => _selectedMedecin = val),
+                validator: (val) =>
+                    val == null ? "Choisissez un médecin" : null,
               ),
+
               SizedBox(height: 16),
+
+              // Patient Dropdown si secrétaire
+              if (widget.userRole == 'secretaire')
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: "Patient",
+                    border: OutlineInputBorder(),
+                  ),
+                  value: _selectedPatient,
+                  items: patients
+                      .map((p) => DropdownMenuItem(
+                          value: p['id'].toString(),
+                          child: Text("${p['nom']} ${p['prenom']}")))
+                      .toList(),
+                  onChanged: (val) => setState(() => _selectedPatient = val),
+                  validator: (val) =>
+                      val == null ? "Choisissez un patient" : null,
+                ),
+              SizedBox(height: 16),
+
+              // Hopital
               TextFormField(
                 controller: _hopitalController,
                 decoration: InputDecoration(
-                  labelText: "Id hopital",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  labelText: "ID Hopital",
+                  border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
-                validator: (value) =>
-                    value!.isEmpty ? "Entrez l'ID de l'hopital" : null,
+                validator: (val) =>
+                    val!.isEmpty ? "Entrez l'ID de l'hopital" : null,
               ),
-
               SizedBox(height: 16),
 
-              // Patient ID uniquement si secrétaire
-              if (widget.userRole == "secretaire") ...[
-                TextFormField(
-                  controller: _patientController,
-                  decoration: InputDecoration(
-                    labelText: "ID Patient",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
-                  validator: (value) =>
-                      value!.isEmpty ? "Entrez l'ID du patient" : null,
-                ),
-              ],
-              SizedBox(height: 16),
               // Description
               TextFormField(
                 controller: _descriptionController,
                 decoration: InputDecoration(
                   labelText: "Description",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  border: OutlineInputBorder(),
                 ),
                 maxLines: 3,
-                validator: (value) =>
-                    value!.isEmpty ? "Entrez une description" : null,
+                validator: (val) =>
+                    val!.isEmpty ? "Entrez une description" : null,
               ),
-
               SizedBox(height: 24),
 
               _isLoading
                   ? Center(child: CircularProgressIndicator())
                   : ElevatedButton(
                       onPressed: _submitForm,
-                      child: Text("Créer le rendez-vous"),
-                    ),
+                      child: Text("Créer le rendez-vous")),
             ],
           ),
         ),

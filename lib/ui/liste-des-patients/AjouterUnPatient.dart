@@ -257,7 +257,8 @@ class _ajouterUnPatientState extends State<ajouterUnPatient> {
                           Navigator.push(
                             (context),
                             MaterialPageRoute(
-                                builder: (context) => listeDesPatients()),
+                                builder: (context) =>
+                                    ListeDesPatientsPourAdmin()),
                           );
                         },
                         child: Text(

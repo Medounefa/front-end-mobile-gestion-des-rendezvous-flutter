@@ -4,7 +4,7 @@ import 'package:gestiondesrendezvoushopitals/ui/liste-des-rendez-vous-pris-par-d
 import 'package:gestiondesrendezvoushopitals/ui/medecins-dispo-rv/ListeMedecins.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/notifications/notificationPush.dart';
-import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/MesRendezVousPage.dart';
 
 import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
 import 'package:gestiondesrendezvoushopitals/ui/users/UserInfoCard.dart';
@@ -150,8 +150,7 @@ class _tableauDeBoardPatientState extends State<tableauDeBoardPatient> {
                           Navigator.push(
                             (context),
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    HistoriqueRendezVousPourPatients()),
+                                builder: (context) => MesRendezVousPage()),
                           );
                         },
                         child: Container(

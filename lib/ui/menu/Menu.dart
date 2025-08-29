@@ -7,7 +7,7 @@ import 'package:gestiondesrendezvoushopitals/ui/hopitaux/listeHopitaux.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/ListeDesMedecinsPourAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-patients/listeDesPatients.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-secretaire/listeDesSecretaire.dart';
-import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/HistoriqueRendezVousPourPatients.dart';
+import 'package:gestiondesrendezvoushopitals/ui/prise-de-rendez-vous/MesRendezVousPage.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rapports-admin/ajouterUnRapport.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rapports-admin/rapportsAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/rendez-vous/ajouterUnRendezVousPourPatientParAdmin.dart';
@@ -70,7 +70,7 @@ class _MenuState extends State<Menu> {
                       Navigator.push(
                           (context),
                           MaterialPageRoute(
-                              builder: (context) => departementsDispo()));
+                              builder: (context) => DepartementsPage()));
                     }, // à remplir
                   ),
                   ListTile(
@@ -80,7 +80,7 @@ class _MenuState extends State<Menu> {
                       Navigator.push(
                           (context),
                           MaterialPageRoute(
-                              builder: (context) => listeHopitaux()));
+                              builder: (context) => HopitauxPage()));
                     }, // à remplir
                   ),
                   ListTile(
@@ -97,12 +97,23 @@ class _MenuState extends State<Menu> {
                   ListTile(
                     leading: Icon(Icons.people),
                     title: Text('secretaires'),
-                    onTap: () {}, // à remplir
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => ListeSecretaires()));
+                    }, // à remplir
                   ),
                   ListTile(
                     leading: Icon(Icons.people),
                     title: Text('Patients'),
-                    onTap: () {}, // à remplir
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ListeDesPatientsPourAdmin()));
+                    }, // à remplir
                   ),
                   ListTile(
                     leading: Icon(Icons.calendar_today),
@@ -117,7 +128,12 @@ class _MenuState extends State<Menu> {
                   ListTile(
                     leading: Icon(Icons.people),
                     title: Text('Rapports'),
-                    onTap: () {}, // à remplir
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => rapportsAdmin()));
+                    }, // à remplir
                   ),
                 ],
 
@@ -126,7 +142,13 @@ class _MenuState extends State<Menu> {
                   ListTile(
                     leading: Icon(Icons.calendar_today),
                     title: Text('Mes rendez-vous'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        (context),
+                        MaterialPageRoute(
+                            builder: (context) => MesRendezVousPage()),
+                      );
+                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.calendar_today),
@@ -136,7 +158,13 @@ class _MenuState extends State<Menu> {
                   ListTile(
                     leading: Icon(Icons.calendar_today),
                     title: Text('Disponibilites'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  listeDisponibilitesCalendrier()));
+                    },
                   ),
                 ],
 
@@ -163,8 +191,7 @@ class _MenuState extends State<Menu> {
                       Navigator.push(
                         (context),
                         MaterialPageRoute(
-                            builder: (context) =>
-                                HistoriqueRendezVousPourPatients()),
+                            builder: (context) => MesRendezVousPage()),
                       );
                     },
                   ),

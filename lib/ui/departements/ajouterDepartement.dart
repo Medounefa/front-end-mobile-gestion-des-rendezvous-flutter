@@ -157,7 +157,9 @@ class _AjouterdepartementState extends State<Ajouterdepartement> {
   final TextEditingController _nomController = TextEditingController();
 
   void _saveDepartement() async {
-    bool success = await ApiMobileRv.ajouterDepartement(_nomController.text);
+    bool success = await ApiMobileRv.ajouterDepartement(
+      _nomController.text,
+    );
     if (success) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Département ajouté")));

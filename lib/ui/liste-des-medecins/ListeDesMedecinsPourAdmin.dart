@@ -1,17 +1,228 @@
+// import 'package:flutter/material.dart';
+// import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/AjouterUnMedecin.dart';
+// import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/detailsMedecinPourAdmin.dart';
+// import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
+// import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
+// import 'package:gestiondesrendezvoushopitals/ui/users/CreateUser.dart';
+
+// class Medecins {
+//   final String profile;
+//   final String nom;
+//   final String specialisation;
+//   Medecins(
+//       {required this.profile, required this.nom, required this.specialisation});
+// }
+
+// class ListeDesMedecinsPourAdmin extends StatefulWidget {
+//   const ListeDesMedecinsPourAdmin({super.key});
+
+//   @override
+//   State<ListeDesMedecinsPourAdmin> createState() =>
+//       _ListeDesMedecinsPourAdminState();
+// }
+
+// class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
+//   final List<Medecins> medecins = [
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Mankeur wade",
+//         specialisation: "Cardiologue"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Medoune Fall",
+//         specialisation: "Pneumologue"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Seynabou Faye",
+//         specialisation: "Cardiologue"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Amadou Nidaye",
+//         specialisation: "Dentiste"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Seynabou Sene",
+//         specialisation: "Cardiologue"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Sidy Diop",
+//         specialisation: "Dentiste"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Mankeur wade",
+//         specialisation: "Cardiologue"),
+//     Medecins(
+//         profile: "assets/images/med1.jpg",
+//         nom: "Dr Mankeur Diouf",
+//         specialisation: "Cardiologue"),
+//   ];
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       drawer: Menu(),
+//       appBar: AppBar(
+//         iconTheme: IconThemeData(
+//           color: Color(0xFFFFFFFF), // icône burger noir
+//         ),
+//         backgroundColor: Color(0xFF007BFF),
+//         toolbarHeight: 100,
+//         title: Text(
+//           "listes des \nmedecins",
+//           style: TextStyle(color: Color(0xFFFFFFFF)),
+//         ),
+//         actions: [
+//           Row(
+//             children: [
+//               Container(
+//                 child: Stack(
+//                   children: [
+//                     Icon(
+//                       Icons.notifications,
+//                       size: 40,
+//                       color: Color(0xFF2196F3),
+//                     ),
+//                     Positioned(
+//                       top: 2,
+//                       right: 0,
+//                       child: Container(
+//                         width: 10,
+//                         height: 10,
+//                         decoration: BoxDecoration(
+//                           color: Color(0xFFFFB74D),
+//                           shape: BoxShape.circle,
+//                           border: Border.all(color: Colors.white, width: 1.2),
+//                         ),
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//               Container(
+//                 padding: EdgeInsets.only(
+//                   right: 10,
+//                 ),
+//                 child: ClipOval(
+//                   child: UserMenu(),
+//                 ),
+//               ),
+//             ],
+//           )
+//         ],
+//       ),
+//       body: SafeArea(
+//         child: Padding(
+//           padding: EdgeInsets.all(16.0),
+//           child: Column(
+//             children: [
+//               Row(
+//                 children: [
+//                   Expanded(
+//                     child: TextField(
+//                       decoration: InputDecoration(
+//                         hintText: "Recherche un medecin par ...",
+//                         border: OutlineInputBorder(
+//                           borderRadius: BorderRadius.circular(10),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(width: 5),
+//                   ElevatedButton(
+//                     onPressed: () {},
+//                     child: Icon(
+//                       Icons.search,
+//                       color: Color(0xFFFFFFFF),
+//                     ),
+//                     style: ElevatedButton.styleFrom(
+//                       maximumSize: Size(150, 50),
+//                       backgroundColor: Color(0xFF4CAF50),
+//                       padding:
+//                           EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+//                       shape: RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(8),
+//                       ),
+//                     ),
+//                   )
+//                 ],
+//               ),
+//               SizedBox(
+//                 height: 14,
+//               ),
+//               Container(
+//                 child: Expanded(
+//                   child: ListView.builder(
+//                     itemCount: medecins.length,
+//                     itemBuilder: (context, index) {
+//                       final medecin = medecins[index];
+//                       return InkWell(
+//                         onTap: () {
+//                           Navigator.push(
+//                             (context),
+//                             MaterialPageRoute(
+//                                 builder: (context) => detailsMedecinPourAdmin(
+//                                       medecin: medecin,
+//                                     )),
+//                           );
+//                         },
+//                         child: Container(
+//                           padding:
+//                               EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+//                           child: ListTile(
+//                             leading: ClipOval(
+//                               child: Image.asset(
+//                                 medecin.profile,
+//                                 width: 50,
+//                                 height: 50,
+//                                 fit: BoxFit.cover,
+//                               ),
+//                             ),
+//                             title: Text(medecin.nom),
+//                             subtitle: Text(medecin.specialisation),
+//                           ),
+//                         ),
+//                       );
+//                     },
+//                   ),
+//                 ),
+//               ),
+//               Padding(
+//                 padding: EdgeInsets.all(20),
+//                 child: ElevatedButton.icon(
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: Color(0xFF4CAF50),
+//                   ),
+//                   onPressed: () {
+//                     Navigator.push(
+//                       (context),
+//                       MaterialPageRoute(builder: (context) => Createuser()),
+//                       // builder: (context) => AjouterUnMedecin()),
+//                     );
+//                   },
+//                   icon: Icon(
+//                     Icons.add,
+//                     color: Color(0xFFFFFFFF),
+//                   ),
+//                   label: Text(
+//                     "Ajouter un medecin",
+//                     style: TextStyle(color: Color(0xFFFFFFFF)),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
-import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/AjouterUnMedecin.dart';
+import 'package:gestiondesrendezvoushopitals/services/ApiMobileRv.dart';
 import 'package:gestiondesrendezvoushopitals/ui/liste-des-medecins/detailsMedecinPourAdmin.dart';
 import 'package:gestiondesrendezvoushopitals/ui/menu/Menu.dart';
-import 'package:gestiondesrendezvoushopitals/ui/user-menu/userMenu.dart';
-import 'package:gestiondesrendezvoushopitals/ui/users/CreateUser.dart';
 
-class Medecins {
-  final String profile;
-  final String nom;
-  final String specialisation;
-  Medecins(
-      {required this.profile, required this.nom, required this.specialisation});
-}
+import 'package:gestiondesrendezvoushopitals/ui/users/CreateUser.dart';
 
 class ListeDesMedecinsPourAdmin extends StatefulWidget {
   const ListeDesMedecinsPourAdmin({super.key});
@@ -22,196 +233,207 @@ class ListeDesMedecinsPourAdmin extends StatefulWidget {
 }
 
 class _ListeDesMedecinsPourAdminState extends State<ListeDesMedecinsPourAdmin> {
-  final List<Medecins> medecins = [
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Mankeur wade",
-        specialisation: "Cardiologue"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Medoune Fall",
-        specialisation: "Pneumologue"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Seynabou Faye",
-        specialisation: "Cardiologue"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Amadou Nidaye",
-        specialisation: "Dentiste"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Seynabou Sene",
-        specialisation: "Cardiologue"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Sidy Diop",
-        specialisation: "Dentiste"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Mankeur wade",
-        specialisation: "Cardiologue"),
-    Medecins(
-        profile: "assets/images/med1.jpg",
-        nom: "Dr Mankeur Diouf",
-        specialisation: "Cardiologue"),
-  ];
+  List<dynamic> allUsers = [];
+  List<dynamic> medecins = [];
+  bool loading = true;
+  String searchQuery = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsers();
+  }
+
+  Future<void> _loadUsers() async {
+    setState(() => loading = true);
+    final users = await ApiMobileRv.getUsers();
+    setState(() {
+      allUsers = users;
+      medecins = allUsers.where((u) => u['role'] == 'medecin').toList();
+      loading = false;
+    });
+  }
+
+  void _searchMedecin(String query) {
+    final filtered = allUsers
+        .where((u) =>
+            u['role'] == 'medecin' &&
+            (u['prenom'].toLowerCase().contains(query.toLowerCase()) ||
+                u['nom'].toLowerCase().contains(query.toLowerCase())))
+        .toList();
+    setState(() {
+      medecins = filtered;
+    });
+  }
+
+  Future<void> _deleteMedecin(int id) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Confirmer la suppression"),
+        content: Text("Voulez-vous vraiment supprimer ce médecin ?"),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text("Annuler")),
+          TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text("Supprimer")),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      final success =
+          await ApiMobileRv.deleteUser(id); // à adapter selon ton API
+      if (success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Médecin supprimé avec succès")));
+        _loadUsers();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Erreur lors de la suppression")));
+      }
+    }
+  }
+
+  void _editMedecin(Map<String, dynamic> medecin) async {
+    // On réutilise le formulaire CreateUser mais en mode édition
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (_) => Createuser(
+                userToEdit: medecin,
+              )),
+    );
+    if (result == true) {
+      _loadUsers();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Menu(),
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Color(0xFFFFFFFF), // icône burger noir
-        ),
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xFF007BFF),
         toolbarHeight: 100,
         title: Text(
-          "listes des \nmedecins",
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          "Liste des médecins",
+          style: TextStyle(color: Colors.white),
         ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                child: Stack(
+      ),
+      body: SafeArea(
+        child: loading
+            ? Center(child: CircularProgressIndicator())
+            : Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
                   children: [
-                    Icon(
-                      Icons.notifications,
-                      size: 40,
-                      color: Color(0xFF2196F3),
-                    ),
-                    Positioned(
-                      top: 2,
-                      right: 0,
-                      child: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFB74D),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1.2),
+                    // Recherche
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Recherche un médecin...",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onChanged: _searchMedecin,
+                          ),
                         ),
+                        SizedBox(width: 5),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Icon(Icons.search, color: Colors.white),
+                          style: ElevatedButton.styleFrom(
+                            maximumSize: Size(150, 50),
+                            backgroundColor: Color(0xFF4CAF50),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 14),
+                    Expanded(
+                      child: medecins.isEmpty
+                          ? Center(child: Text("Aucun médecin trouvé"))
+                          : ListView.builder(
+                              itemCount: medecins.length,
+                              itemBuilder: (context, index) {
+                                final medecin = medecins[index];
+                                return Card(
+                                  margin: EdgeInsets.symmetric(vertical: 5),
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      child: Icon(Icons.person),
+                                    ),
+                                    title: Text(
+                                        "${medecin['prenom']} ${medecin['nom']}"),
+                                    subtitle: Text(
+                                        "Spécialité: ${medecin['specialite'] ?? 'N/A'}"),
+                                    trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.edit,
+                                              color: Colors.orange),
+                                          onPressed: () =>
+                                              _editMedecin(medecin),
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.delete,
+                                              color: Colors.red),
+                                          onPressed: () =>
+                                              _deleteMedecin(medecin['id']),
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                detailsMedecinPourAdmin(
+                                                  medecin: medecin,
+                                                )),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                    ),
+                    SizedBox(height: 10),
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF4CAF50),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Createuser(
+                                    userToEdit: {},
+                                  )),
+                        ).then((_) => _loadUsers());
+                      },
+                      icon: Icon(Icons.add, color: Colors.white),
+                      label: Text(
+                        "Ajouter un médecin",
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(
-                  right: 10,
-                ),
-                child: ClipOval(
-                  child: UserMenu(),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Recherche un medecin par ...",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      Icons.search,
-                      color: Color(0xFFFFFFFF),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      maximumSize: Size(150, 50),
-                      backgroundColor: Color(0xFF4CAF50),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 14,
-              ),
-              Container(
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: medecins.length,
-                    itemBuilder: (context, index) {
-                      final medecin = medecins[index];
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) => detailsMedecinPourAdmin(
-                                      medecin: medecin,
-                                    )),
-                          );
-                        },
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                          child: ListTile(
-                            leading: ClipOval(
-                              child: Image.asset(
-                                medecin.profile,
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            title: Text(medecin.nom),
-                            subtitle: Text(medecin.specialisation),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF4CAF50),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      (context),
-                      MaterialPageRoute(builder: (context) => Createuser()),
-                      // builder: (context) => AjouterUnMedecin()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.add,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                  label: Text(
-                    "Ajouter un medecin",
-                    style: TextStyle(color: Color(0xFFFFFFFF)),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

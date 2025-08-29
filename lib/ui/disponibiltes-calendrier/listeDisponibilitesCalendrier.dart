@@ -681,11 +681,10 @@ class _listeDisponibilitesCalendrierState
                         ),
                         onPressed: () {
                           Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    AjouterDisponibiliteCalendrier()),
-                          );
+                              (context),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      AjouterDisponibilitePage()));
                         },
                         child: Text(
                           "Ajoute une disponibilite",
